@@ -1,0 +1,1773 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مديرية بلدية النخيب | Directorate of Al-Nukhaib Municipality</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f2f5f7; --bg-alt:#e8edf1; --card:#ffffff; --text:#12261c; --muted:#64748b;
+  --primary:#0d5c3d; --primary-2:#0a7a4f; --primary-dark:#073d28;
+  --accent:#c9a227; --accent-2:#e7c65a; --border:#dbe4e9;
+  --shadow:0 6px 24px rgba(9,44,30,.08); --shadow-lg:0 18px 50px rgba(9,44,30,.16);
+  --radius:18px; --header-h:74px;
+}
+[data-theme="dark"]{
+  --bg:#0b1220; --bg-alt:#111a2b; --card:#16213a; --text:#e7eef7; --muted:#9aa9c0;
+  --primary:#1d8f63; --primary-2:#25b57e; --primary-dark:#0d3b28;
+  --accent:#e2bd45; --accent-2:#f2d67a; --border:#26334f;
+  --shadow:0 6px 24px rgba(0,0,0,.45); --shadow-lg:0 18px 50px rgba(0,0,0,.6);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Cairo',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.75;transition:background .3s,color .3s;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input,textarea,select{font-family:inherit}
+
+/* FLOATING BUTTONS */
+.float-btns{position:fixed;left:0;top:45%;transform:translateY(-50%);z-index:900;display:flex;flex-direction:column;gap:10px;padding:8px 0}
+.float-btns button{width:52px;height:52px;border-radius:0 14px 14px 0;background:var(--card);border:1px solid var(--border);border-left:none;box-shadow:var(--shadow);display:grid;place-items:center;font-size:1.35rem;font-weight:700;transition:.25s;color:var(--text)}
+.float-btns button:hover{background:var(--primary);color:#fff;width:60px}
+.float-btns button.lang-btn{font-size:.95rem;letter-spacing:.5px}
+
+/* HEADER */
+header.site-header{position:sticky;top:0;z-index:800;background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);box-shadow:0 2px 18px rgba(0,0,0,.06)}
+.topbar{background:linear-gradient(90deg,var(--primary-dark),var(--primary));color:#eaf6f0;font-size:.82rem;padding:6px 0}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.topbar a{opacity:.9}
+.topbar a:hover{opacity:1;text-decoration:underline}
+.nav-wrap{max-width:1280px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;height:var(--header-h)}
+.logo-box{display:flex;align-items:center;gap:12px;cursor:pointer;user-select:none}
+.logo-mark{width:50px;height:50px;border-radius:14px;background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;display:grid;place-items:center;font-size:1.6rem;box-shadow:0 6px 18px rgba(13,92,61,.35);flex-shrink:0;overflow:hidden}
+.logo-mark img{width:100%;height:100%;object-fit:cover}
+.logo-txt b{display:block;font-size:1.02rem;line-height:1.25;color:var(--text)}
+.logo-txt span{font-size:.72rem;color:var(--muted);letter-spacing:.3px}
+
+/* NAV */
+nav.main-nav{display:flex;align-items:center;gap:2px;flex:1;justify-content:center}
+nav.main-nav > .nav-item{position:relative;display:flex;align-items:center;border-radius:10px;transition:.2s}
+nav.main-nav > .nav-item > .nav-main-link{padding:10px 14px;font-size:.87rem;font-weight:600;color:var(--text);white-space:nowrap;border-radius:10px;transition:.2s;display:block}
+nav.main-nav > .nav-item > .nav-caret{padding:10px 8px 10px 2px;font-size:.6rem;color:var(--muted);transition:.2s;border-radius:0 10px 10px 0}
+nav.main-nav > .nav-item:hover > .nav-main-link,
+nav.main-nav > .nav-item.active > .nav-main-link,
+nav.main-nav > .nav-item:hover > .nav-caret,
+nav.main-nav > .nav-item.active > .nav-caret{background:var(--primary);color:#fff}
+.dropdown{position:absolute;top:calc(100% + 8px);inset-inline-start:0;min-width:250px;background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow-lg);padding:8px;opacity:0;visibility:hidden;transform:translateY(-8px);transition:.22s;z-index:850;max-height:70vh;overflow:auto}
+.nav-item:hover > .dropdown,
+.nav-item.open > .dropdown{opacity:1;visibility:visible;transform:translateY(0)}
+.dropdown a{display:block;padding:10px 14px;border-radius:9px;font-size:.85rem;font-weight:500;transition:.18s}
+.dropdown a:hover{background:var(--primary);color:#fff;padding-inline-start:20px}
+.burger{display:none;font-size:1.6rem;padding:6px 10px;border-radius:10px;background:var(--bg-alt)}
+
+/* LAYOUT */
+.wrap{max-width:1280px;margin:0 auto;padding:0 20px}
+.section{padding:56px 0}
+.section-title{text-align:center;margin-bottom:38px}
+.section-title h2{font-size:clamp(1.4rem,3vw,2rem);font-weight:900;color:var(--text);display:inline-block;position:relative;padding-bottom:14px}
+.section-title h2::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:80px;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--primary),var(--accent))}
+.section-title p{color:var(--muted);font-size:.92rem;margin-top:8px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 24px;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;font-weight:700;font-size:.9rem;box-shadow:0 8px 22px rgba(13,92,61,.28);transition:.25s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(13,92,61,.38)}
+.btn.ghost{background:transparent;color:var(--primary);border:2px solid var(--primary);box-shadow:none}
+.btn.ghost:hover{background:var(--primary);color:#fff}
+.btn.small{padding:7px 16px;font-size:.8rem}
+.btn.danger{background:linear-gradient(135deg,#b91c1c,#dc2626);box-shadow:0 8px 22px rgba(185,28,28,.3)}
+
+/* HERO */
+.hero{position:relative;min-height:clamp(360px,62vh,600px);background-size:cover;background-position:center;display:flex;align-items:center;clip-path:polygon(0 0,100% 0,100% 86%,78% 96%,56% 88%,33% 97%,12% 89%,0 93%);margin-bottom:-40px}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,rgba(7,61,40,.88) 0%,rgba(7,61,40,.62) 45%,rgba(7,61,40,.25) 100%)}
+.hero-inner{position:relative;z-index:2;max-width:1280px;margin:0 auto;padding:0 20px 60px;width:100%}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.32);color:#fff;padding:7px 18px;border-radius:99px;font-size:.8rem;font-weight:600;margin-bottom:18px;backdrop-filter:blur(6px)}
+.hero h1{color:#fff;font-size:clamp(1.7rem,4.6vw,3.3rem);font-weight:900;line-height:1.25;max-width:760px;text-shadow:0 4px 24px rgba(0,0,0,.4)}
+.hero p.sub{color:#d8ece2;font-size:clamp(.9rem,1.8vw,1.1rem);margin-top:14px;max-width:620px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.hero-actions .btn{box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.hero-actions .btn.gold{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#3a2c00}
+
+/* STATS */
+.stats-grid{position:relative;z-index:5;display:grid;grid-template-columns:repeat(5,1fr);gap:16px;max-width:1180px;margin:0 auto;padding:0 20px}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px 14px;text-align:center;box-shadow:var(--shadow);transition:.3s;position:relative;overflow:hidden}
+.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--primary),var(--accent))}
+.stat-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.stat-ico{font-size:1.7rem;margin-bottom:6px}
+.stat-num{font-size:clamp(1.5rem,3vw,2.1rem);font-weight:900;color:var(--primary);line-height:1.1}
+[data-theme="dark"] .stat-num{color:var(--primary-2)}
+.stat-lbl{font-size:.78rem;color:var(--muted);font-weight:600;margin-top:4px}
+
+/* CARDS */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.news-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:.3s;display:flex;flex-direction:column}
+.news-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.news-thumb{height:190px;background:var(--bg-alt);overflow:hidden;position:relative}
+.news-thumb img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.news-card:hover .news-thumb img{transform:scale(1.07)}
+.news-thumb .ph{width:100%;height:100%;display:grid;place-items:center;font-size:2.6rem;opacity:.35;background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff}
+.news-date{position:absolute;top:12px;inset-inline-end:12px;background:rgba(0,0,0,.65);color:#fff;padding:4px 12px;border-radius:99px;font-size:.72rem;font-weight:600;backdrop-filter:blur(4px)}
+.news-body{padding:18px 20px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.news-body h3{font-size:1.02rem;font-weight:700;line-height:1.45}
+.news-body p{font-size:.86rem;color:var(--muted);flex:1}
+.more-link{color:var(--primary);font-weight:700;font-size:.85rem;display:inline-flex;align-items:center;gap:6px}
+[data-theme="dark"] .more-link{color:var(--primary-2)}
+.more-link:hover{gap:12px;transition:.2s}
+
+.dept-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow);transition:.3s;border-inline-start:5px solid var(--primary);position:relative;scroll-margin-top:120px}
+.dept-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+.dept-card.highlight{border-color:var(--accent);box-shadow:0 0 0 4px rgba(201,162,39,.35),var(--shadow-lg);animation:pulseHi 1.6s ease 3}
+@keyframes pulseHi{0%,100%{box-shadow:0 0 0 4px rgba(201,162,39,.35),var(--shadow-lg)}50%{box-shadow:0 0 0 10px rgba(201,162,39,.12),var(--shadow-lg)}}
+.dept-card h3{font-size:1.08rem;font-weight:800;margin-bottom:12px;display:flex;align-items:center;gap:10px;color:var(--primary)}
+[data-theme="dark"] .dept-card h3{color:var(--primary-2)}
+.dept-card .ico{width:42px;height:42px;border-radius:12px;flex-shrink:0;background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;display:grid;place-items:center;font-size:1.15rem}
+.dept-card p{font-size:.89rem;color:var(--muted);white-space:pre-line}
+
+/* PAGE FOOTER BLOCK */
+.page-footer-block{background:var(--bg-alt);border-top:1px solid var(--border);padding:52px 0 40px;margin-top:50px}
+.pf-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;max-width:1280px;margin:0 auto;padding:0 20px}
+.pf-box{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+.pf-box h3{font-size:1.05rem;font-weight:800;margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid var(--border);display:flex;align-items:center;gap:9px;color:var(--primary)}
+[data-theme="dark"] .pf-box h3{color:var(--primary-2)}
+.map-frame{width:100%;height:280px;border-radius:14px;overflow:hidden;border:1px solid var(--border);background:var(--bg-alt)}
+.map-frame iframe{width:100%;height:100%;border:0;display:block}
+.contact-rows{display:flex;flex-direction:column;gap:14px}
+.contact-row{display:flex;gap:12px;align-items:flex-start;font-size:.88rem}
+.contact-row .ci{width:38px;height:38px;border-radius:11px;flex-shrink:0;background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;display:grid;place-items:center;font-size:1rem}
+.contact-row b{display:block;font-size:.75rem;color:var(--muted);font-weight:600}
+.contact-row span{font-weight:600}
+
+/* SOCIAL */
+.social-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:26px;padding-top:22px;border-top:1px solid var(--border)}
+.social-ico{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;font-size:1.3rem;background:var(--bg-alt);color:var(--text);border:1px solid var(--border);transition:.28s}
+.social-ico:hover{transform:translateY(-5px) scale(1.06);color:#fff}
+.social-ico.fb:hover{background:#1877f2;border-color:#1877f2}
+.social-ico.wa:hover{background:#25d366;border-color:#25d366}
+.social-ico.tt:hover{background:#000;border-color:#000}
+.social-ico.yt:hover{background:#ff0000;border-color:#ff0000}
+
+/* LINKS */
+.links-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.link-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 14px;text-align:center;box-shadow:var(--shadow);transition:.3s;display:flex;flex-direction:column;align-items:center;gap:9px}
+.link-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--primary)}
+.link-card .li{font-size:1.6rem}
+.link-card b{font-size:.83rem;font-weight:700;line-height:1.4}
+
+/* PAGE HERO */
+.page-hero{background:linear-gradient(120deg,var(--primary-dark),var(--primary) 60%,var(--primary-2));color:#fff;padding:52px 0 44px;position:relative;overflow:hidden}
+.page-hero::after{content:'';position:absolute;inset-inline-end:-80px;top:-80px;width:320px;height:320px;border-radius:50%;background:rgba(255,255,255,.06)}
+.page-hero::before{content:'';position:absolute;inset-inline-start:-60px;bottom:-100px;width:260px;height:260px;border-radius:50%;background:rgba(201,162,39,.14)}
+.page-hero .wrap{position:relative;z-index:2}
+.page-hero h1{font-size:clamp(1.5rem,3.6vw,2.3rem);font-weight:900}
+.breadcrumb{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:.82rem;margin-top:10px;opacity:.9}
+.breadcrumb a:hover{text-decoration:underline}
+
+/* ARTICLE */
+.article-box{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:34px;box-shadow:var(--shadow)}
+.article-box h2{font-size:1.5rem;font-weight:800;margin-bottom:8px;color:var(--primary)}
+[data-theme="dark"] .article-box h2{color:var(--primary-2)}
+.article-meta{font-size:.8rem;color:var(--muted);margin-bottom:22px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.article-body{font-size:.95rem;line-height:2;white-space:pre-line;color:var(--text)}
+.article-img{width:100%;max-height:420px;object-fit:cover;border-radius:14px;margin-bottom:22px}
+
+/* GALLERY CAROUSEL */
+.gallery-carousel{position:relative;width:100%;height:clamp(280px,45vh,480px);border-radius:22px;overflow:hidden;box-shadow:var(--shadow-lg);background:var(--bg-alt)}
+.gal-slide{position:absolute;inset:0;opacity:0;background-size:cover;background-position:center;transition:opacity .25s}
+.gal-slide.active{opacity:1;z-index:2}
+.gal-slide::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.68) 0%,transparent 55%)}
+.gal-caption{position:absolute;bottom:0;left:0;right:0;padding:22px;color:#fff;z-index:3;font-weight:700;font-size:clamp(.9rem,1.5vw,1.15rem);text-shadow:0 2px 12px rgba(0,0,0,.6)}
+.gal-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.85);color:var(--primary-dark);font-size:1.4rem;font-weight:900;display:grid;place-items:center;cursor:pointer;transition:.2s;font-family:monospace}
+.gal-nav:hover{background:#fff;transform:translateY(-50%) scale(1.08)}
+.gal-nav.prev{right:16px}
+.gal-nav.next{left:16px}
+.gal-dots{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:5}
+.gal-dot{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.5);cursor:pointer;transition:.2s;padding:0;border:none}
+.gal-dot.active{background:#fff;width:26px;border-radius:5px}
+
+@keyframes galFade{from{opacity:0}to{opacity:1}}
+@keyframes galSlideLeft{from{transform:translateX(100%);opacity:0}to{transform:translateX(0);opacity:1}}
+@keyframes galSlideRight{from{transform:translateX(-100%);opacity:0}to{transform:translateX(0);opacity:1}}
+@keyframes galSlideUp{from{transform:translateY(100%);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes galSlideDown{from{transform:translateY(-100%);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes galZoomIn{from{transform:scale(1.4);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes galZoomOut{from{transform:scale(.6);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes galRotate{from{transform:rotate(-15deg) scale(1.3);opacity:0}to{transform:rotate(0) scale(1);opacity:1}}
+@keyframes galFlip{from{transform:perspective(800px) rotateY(90deg);opacity:0}to{transform:perspective(800px) rotateY(0);opacity:1}}
+@keyframes galBlur{from{filter:blur(20px);opacity:0}to{filter:blur(0);opacity:1}}
+@keyframes galDiagonal{from{transform:translate(-100%,100%);opacity:0}to{transform:translate(0,0);opacity:1}}
+@keyframes galSwing{from{transform:rotate(8deg) scale(1.1);opacity:0}to{transform:rotate(0) scale(1);opacity:1}}
+.gal-slide.anim-fade.active{animation:galFade .9s ease}
+.gal-slide.anim-slide-left.active{animation:galSlideLeft .9s ease}
+.gal-slide.anim-slide-right.active{animation:galSlideRight .9s ease}
+.gal-slide.anim-slide-up.active{animation:galSlideUp .9s ease}
+.gal-slide.anim-slide-down.active{animation:galSlideDown .9s ease}
+.gal-slide.anim-zoom-in.active{animation:galZoomIn .9s ease}
+.gal-slide.anim-zoom-out.active{animation:galZoomOut .9s ease}
+.gal-slide.anim-rotate.active{animation:galRotate .9s ease}
+.gal-slide.anim-flip.active{animation:galFlip .9s ease}
+.gal-slide.anim-blur.active{animation:galBlur .9s ease}
+.gal-slide.anim-diagonal.active{animation:galDiagonal .9s ease}
+.gal-slide.anim-swing.active{animation:galSwing .9s ease}
+
+/* YOUTUBE */
+.yt-wrap{max-width:900px;margin:0 auto}
+.yt-frame{position:relative;width:100%;aspect-ratio:16/9;border-radius:18px;overflow:hidden;box-shadow:var(--shadow-lg);background:#000}
+.yt-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt-placeholder{padding:60px 20px;text-align:center;color:var(--muted);background:var(--bg-alt);border-radius:18px;border:2px dashed var(--border);font-weight:600}
+
+/* SERVICES */
+.serv-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);transition:.3s;cursor:pointer;text-align:center}
+.serv-card:hover{transform:translateY(-7px);box-shadow:var(--shadow-lg);border-color:var(--primary)}
+.serv-card .si{width:72px;height:72px;border-radius:22px;margin:0 auto 16px;background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;display:grid;place-items:center;font-size:2rem;box-shadow:0 10px 26px rgba(13,92,61,.3)}
+.serv-card h3{font-size:1.05rem;font-weight:800;margin-bottom:8px}
+.serv-card p{font-size:.85rem;color:var(--muted)}
+
+/* TENDERS */
+.tender-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);transition:.3s;display:flex;gap:20px;align-items:flex-start;border-inline-start:5px solid var(--accent)}
+.tender-card:hover{transform:translateX(-4px);box-shadow:var(--shadow-lg)}
+.tender-card .td{width:76px;height:76px;flex-shrink:0;border-radius:16px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#3a2c00;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:900}
+.tender-card .td span:first-child{font-size:1.5rem;line-height:1}
+.tender-card .td span:last-child{font-size:.66rem}
+.tender-card h3{font-size:1.03rem;font-weight:800;margin-bottom:6px}
+.tender-card p{font-size:.86rem;color:var(--muted);white-space:pre-line}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(4,20,14,.7);backdrop-filter:blur(6px);z-index:2000;display:none;align-items:center;justify-content:center;padding:20px;overflow:auto}
+.modal-overlay.show{display:flex}
+.modal{background:var(--card);border-radius:22px;max-width:620px;width:100%;padding:32px;box-shadow:var(--shadow-lg);border:1px solid var(--border);animation:pop .3s ease;max-height:90vh;overflow:auto}
+@keyframes pop{from{transform:scale(.92);opacity:0}to{transform:scale(1);opacity:1}}
+.modal h2{font-size:1.3rem;font-weight:800;margin-bottom:6px;text-align:center}
+.modal .sub{text-align:center;color:var(--muted);font-size:.85rem;margin-bottom:22px}
+.fld{display:block;margin-bottom:14px}
+.fld > span{display:block;font-size:.8rem;font-weight:700;margin-bottom:6px;color:var(--muted)}
+.fld input,.fld textarea,.fld select{width:100%;padding:11px 14px;border-radius:11px;border:1.5px solid var(--border);background:var(--bg);color:var(--text);font-size:.9rem;transition:.2s}
+.fld input:focus,.fld textarea:focus,.fld select:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 4px rgba(13,92,61,.13)}
+.fld textarea{resize:vertical;min-height:80px}
+.modal-actions{display:flex;gap:10px;margin-top:20px}
+.modal-actions .btn{flex:1;justify-content:center}
+
+/* ADMIN PANEL - PORTALS DESIGN */
+.admin-panel{position:fixed;inset:0;background:var(--bg);z-index:3000;display:none;flex-direction:column}
+.admin-panel.show{display:flex}
+.admin-head{background:linear-gradient(90deg,var(--primary-dark),var(--primary));color:#fff;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:14px;box-shadow:0 4px 20px rgba(0,0,0,.2);flex-wrap:wrap}
+.admin-head h2{font-size:1.05rem;font-weight:800}
+.admin-head .acts{display:flex;gap:10px;flex-wrap:wrap}
+.admin-body{flex:1;overflow:auto;padding:24px}
+.admin-inner{max-width:1100px;margin:0 auto}
+
+.admin-portals{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:16px}
+.admin-portal{background:var(--card);border:1.5px solid var(--border);border-radius:18px;padding:26px 16px;text-align:center;cursor:pointer;transition:.25s;display:flex;flex-direction:column;align-items:center;gap:10px;box-shadow:var(--shadow);color:var(--text)}
+.admin-portal:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--primary);background:linear-gradient(160deg,var(--card),color-mix(in srgb,var(--primary) 6%,var(--card)))}
+.ap-icon{font-size:2.4rem;line-height:1}
+.ap-title{font-weight:800;font-size:.95rem;line-height:1.35}
+.ap-desc{font-size:.72rem;color:var(--muted);line-height:1.5;display:none}
+
+.admin-section-view{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:22px;box-shadow:var(--shadow);max-height:calc(100vh - 140px);overflow:auto}
+.admin-section-view h2{color:var(--primary);margin-bottom:10px}
+[data-theme="dark"] .admin-section-view h2{color:var(--primary-2)}
+
+/* ADMIN FORM ELEMENTS */
+.adm-item{border:1px dashed var(--border);border-radius:12px;padding:16px;margin-bottom:14px;background:var(--bg)}
+.adm-item-head{display:flex;justify-content:space-between;align-items:center;font-weight:800;font-size:.88rem;margin-bottom:12px;color:var(--primary);gap:10px}
+[data-theme="dark"] .adm-item-head{color:var(--primary-2)}
+.adm-item-head span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0}
+.adm-item-head button{background:#dc2626;color:#fff;border-radius:8px;padding:4px 12px;font-size:.75rem;font-weight:700;flex-shrink:0}
+.adm-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.adm-hint{font-size:.8rem;color:var(--muted);margin-bottom:14px;line-height:1.6;padding:10px 14px;background:var(--bg-alt);border-radius:10px;border-inline-start:3px solid var(--primary)}
+.file-input{margin-top:6px;font-size:.76rem}
+
+/* TOAST */
+.toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(120px);background:var(--primary);color:#fff;padding:13px 28px;border-radius:14px;font-weight:700;font-size:.88rem;z-index:5000;box-shadow:0 12px 34px rgba(0,0,0,.3);transition:.4s}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+/* FOOTER */
+footer.site-footer{background:linear-gradient(160deg,var(--primary-dark),#041f14);color:#cfe3d9;padding:44px 0 22px}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:34px;max-width:1280px;margin:0 auto;padding:0 20px 30px}
+.footer-grid h4{color:#fff;font-size:1rem;margin-bottom:14px;font-weight:800}
+.footer-grid p,.footer-grid a{font-size:.84rem;line-height:2;opacity:.85}
+.footer-grid a{display:inline-block}
+.footer-grid a:hover{opacity:1;color:var(--accent-2);padding-inline-start:4px;transition:.2s}
+.footer-bottom{text-align:center;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);font-size:.78rem;opacity:.7;max-width:1280px;margin:0 auto;padding-inline:20px}
+
+/* RESPONSIVE */
+@media(max-width:1080px){
+  .stats-grid{grid-template-columns:repeat(3,1fr)}
+  .grid-3{grid-template-columns:repeat(2,1fr)}
+  .links-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:900px){
+  .burger{display:block}
+  nav.main-nav{position:fixed;top:calc(var(--header-h) + 34px);inset-inline-start:0;width:100%;background:var(--card);flex-direction:column;align-items:stretch;gap:0;padding:12px;border-bottom:1px solid var(--border);box-shadow:var(--shadow-lg);max-height:calc(100vh - 120px);overflow:auto;display:none;z-index:790}
+  nav.main-nav.open{display:flex}
+  nav.main-nav > .nav-item{width:100%;flex-wrap:wrap;border-radius:10px;overflow:hidden}
+  nav.main-nav > .nav-item > .nav-main-link{flex:1;padding:13px 16px;text-align:start;border-radius:0}
+  nav.main-nav > .nav-item > .nav-caret{padding:13px 16px;border-radius:0}
+  .dropdown{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:none;background:var(--bg-alt);display:none;margin:4px 0 8px;border-radius:10px;width:100%}
+  .nav-item.open > .dropdown{display:block}
+  .nav-item:hover > .dropdown{display:none}
+  .nav-item.open:hover > .dropdown{display:block}
+  .pf-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr;gap:24px}
+  .adm-row{grid-template-columns:1fr}
+  .ap-desc{display:block}
+}
+@media(max-width:700px){
+  .grid-3,.grid-2{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .links-grid{grid-template-columns:repeat(2,1fr)}
+  .article-box{padding:22px}
+  .tender-card{flex-direction:column}
+  .float-btns button{width:46px;height:46px;font-size:1.15rem}
+  .logo-txt b{font-size:.88rem}
+  .logo-txt span{font-size:.64rem}
+  .admin-portals{grid-template-columns:repeat(2,1fr);gap:12px}
+  .admin-portal{padding:20px 10px}
+  .ap-icon{font-size:1.9rem}
+  .ap-title{font-size:.82rem}
+}
+</style>
+</head>
+<body>
+
+<div class="float-btns">
+  <button id="darkBtn" title="الوضع الليلي / Dark mode">🌙</button>
+  <button id="langBtn" class="lang-btn" title="English / العربية">EN</button>
+</div>
+
+<header class="site-header">
+  <div class="topbar">
+    <div class="wrap">
+      <span id="tbLeft">🇮🇶 جمهورية العراق — وزارة الإعمار والإسكان والبلديات والأشغال العامة</span>
+      <span id="tbRight"></span>
+    </div>
+  </div>
+  <div class="nav-wrap">
+    <div class="logo-box" id="logoBox">
+      <div class="logo-mark" id="logoMark">🏛️</div>
+      <div class="logo-txt">
+        <b id="siteNameTxt">مديرية بلدية النخيب</b>
+        <span id="siteNameSub">Directorate of Al-Nukhaib Municipality</span>
+      </div>
+    </div>
+    <nav class="main-nav" id="mainNav"></nav>
+    <button class="burger" id="burgerBtn">☰</button>
+  </div>
+</header>
+
+<main id="content"></main>
+
+<footer class="site-footer">
+  <div class="footer-grid" id="footerGrid"></div>
+  <div class="footer-bottom" id="footerBottom"></div>
+</footer>
+
+<div class="modal-overlay" id="loginModal">
+  <div class="modal">
+    <h2>🔐 دخول مدير الموقع</h2>
+    <p class="sub">Admin Login</p>
+    <label class="fld"><span>اسم المستخدم / Username</span>
+      <input type="text" id="loginUser" autocomplete="username"></label>
+    <label class="fld"><span>كلمة المرور / Password</span>
+      <input type="password" id="loginPass" autocomplete="current-password"></label>
+    <div class="modal-actions">
+      <button class="btn ghost" onclick="closeLogin()">إلغاء</button>
+      <button class="btn" onclick="doLogin()">دخول</button>
+    </div>
+  </div>
+</div>
+
+<div class="admin-panel" id="adminPanel">
+  <div class="admin-head">
+    <h2>⚙️ لوحة تحكم مدير الموقع</h2>
+    <div class="acts">
+      <button class="btn small ghost" style="color:#fff;border-color:#fff" onclick="resetAll()">↺ استعادة الافتراضي</button>
+      <button class="btn small" style="background:#fff;color:var(--primary)" onclick="saveDraft()">💾 حفظ التغييرات</button>
+      <button class="btn small" style="background:#dc2626;box-shadow:none" onclick="closeAdmin()">✕ إغلاق</button>
+    </div>
+  </div>
+  <div class="admin-body"><div class="admin-inner" id="adminInner"></div></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* =========================================================
+   APP SCRIPT — DIRECTORATE OF AL-NUKHAIB MUNICIPALITY
+   ========================================================= */
+const UID = () => Math.random().toString(36).slice(2,10);
+const today = () => new Date().toISOString().slice(0,10);
+
+/* Default gallery images (12) */
+const GAL = [
+  'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80',
+  'https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=1600&q=80',
+  'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=1600&q=80',
+  'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80',
+  'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&w=1600&q=80',
+  'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1600&q=80',
+  'https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1600&q=80',
+  'https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1600&q=80',
+  'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1600&q=80',
+  'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80',
+  'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=80',
+  'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1600&q=80'
+];
+const GAL_CAPTIONS_AR = ['مبنى مديرية البلدية','مشروع تبليط الطرق','حملة نظافة','اجتماع إداري','شارع رئيسي','منظر جوي للمدينة','النخيب ليلاً','مبنى حكومي','ورشة عمل','كادر المديرية','مكتب المدير','فعالية رسمية'];
+const GAL_CAPTIONS_EN = ['Municipality building','Road paving project','Cleaning campaign','Administrative meeting','Main street','Aerial city view','Al-Nukhaib by night','Government building','Workshop','Directorate staff','Director office','Official event'];
+
+const DEFAULT_DATA = {
+  settings:{
+    siteNameAr:"مديرية بلدية النخيب",
+    siteNameEn:"Directorate of Al-Nukhaib Municipality",
+    logo:"🏛️", logoImg:"",
+    heroImage:"https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&w=1920&q=80",
+    heroTitleAr:"مديرية بلدية النخيب",
+    heroTitleEn:"Directorate of Al-Nukhaib Municipality",
+    heroSubAr:"نعمل من أجل تقديم أفضل الخدمات البلدية لأهالي ناحية النخيب وبناء بيئة عمرانية مستدامة.",
+    heroSubEn:"Working to deliver the best municipal services to the people of Al-Nukhaib and build a sustainable urban environment.",
+    mapEmbed:"https://maps.google.com/maps?q=32.048667,42.245167&t=k&z=15&output=embed",
+    youtubeUrl:"",
+    adminUser:"admin", adminPass:"admin123"
+  },
+  stats:{ visitors:12540 },
+  contact:{
+    addressAr:"ناحية النخيب – قضاء الرطبة – محافظة الأنبار – جمهورية العراق",
+    addressEn:"Al-Nukhaib District – Rutba – Anbar Province – Republic of Iraq",
+    phone:"+964 780 000 0000",
+    email:"info@alnukhaib-mun.iq",
+    hoursAr:"الأحد – الخميس : 8:00 صباحاً – 3:00 مساءً",
+    hoursEn:"Sunday – Thursday : 8:00 AM – 3:00 PM"
+  },
+  social:{
+    facebook:"https://facebook.com",
+    whatsapp:"https://wa.me/9647800000000",
+    tiktok:"https://tiktok.com",
+    youtube:"https://youtube.com"
+  },
+  links:[
+    {id:UID(), icon:"🏛️", nameAr:"وزارة الإعمار والإسكان والبلديات", nameEn:"Ministry of Construction & Municipalities", url:"https://moch.gov.iq"},
+    {id:UID(), icon:"📋", nameAr:"ديوان محافظة الأنبار", nameEn:"Anbar Governorate", url:"https://anbar.gov.iq"},
+    {id:UID(), icon:"🌐", nameAr:"بوابة العراق الإلكترونية", nameEn:"Iraq e-Gateway", url:"https://ur.gov.iq"},
+    {id:UID(), icon:"📊", nameAr:"الجهاز المركزي للإحصاء", nameEn:"Central Statistical Organization", url:"https://cosit.gov.iq"},
+    {id:UID(), icon:"⚖️", nameAr:"مجلس القضاء الأعلى", nameEn:"Supreme Judicial Council", url:"https://scj.gov.iq"}
+  ],
+  gallery: GAL.map((img,i)=>({id:UID(), image:img, captionAr:GAL_CAPTIONS_AR[i], captionEn:GAL_CAPTIONS_EN[i]})),
+  about:{
+    textAr:`مديرية بلدية النخيب هي إحدى تشكيلات وزارة الإعمار والإسكان والبلديات والأشغال العامة في جمهورية العراق، وتمثل الجهة المسؤولة عن إدارة الشؤون البلدية في ناحية النخيب التابعة لقضاء الرطبة في محافظة الأنبار.
+
+تأسست المديرية لتقديم الخدمات البلدية الأساسية من تنظيم عمراني، ونظافة، وتبليط، وإنارة، وحدائق، ومشاريع تنموية، إضافة إلى منح إجازات البناء ومتابعة الأملاك العامة.
+
+تسعى المديرية إلى الارتقاء بمستوى الخدمات المقدمة للمواطنين وتطوير البنية التحتية بما يواكب النمو العمراني في الناحية.`,
+    textEn:`Al-Nukhaib Municipality Directorate is one of the formations of the Ministry of Construction, Housing, Municipalities and Public Works in the Republic of Iraq. It is responsible for managing municipal affairs in Al-Nukhaib district, which belongs to Rutba in Anbar Province.
+
+The Directorate was established to provide basic municipal services such as urban organization, cleaning, paving, lighting, parks, and development projects, in addition to issuing building permits and managing public properties.
+
+The Directorate strives to raise the level of services provided to citizens and to develop infrastructure in line with the urban growth of the district.`,
+    directorImg:"",
+    directorNameAr:"المدير العام للمديرية",
+    directorNameEn:"Director General",
+    directorBioAr:`يشغل منصب مدير بلدية النخيب كادراً إدارياً وهندسياً متخصصاً، حاصل على شهادة البكالوريوس في الهندسة المدنية، ويمتلك خبرة واسعة في مجال إدارة المشاريع البلدية والتنظيم العمراني.
+
+تولى خلال مسيرته المهنية عدداً من المناصب الإدارية في القطاع البلدي، وأشرف على تنفيذ العديد من المشاريع الخدمية والتنموية في ناحية النخيب.
+
+يؤمن سيادته بضرورة العمل المؤسسي الشفاف والانفتاح على المواطنين وتقديم الخدمة بسرعة وكفاءة عاليتين.`,
+    directorBioEn:`The Director of Al-Nukhaib Municipality is a specialized administrative and engineering figure holding a B.Sc. in Civil Engineering, with extensive experience in municipal project management and urban planning.
+
+Throughout his career he has held several administrative positions in the municipal sector and has supervised the implementation of numerous service and development projects in Al-Nukhaib.
+
+He believes in transparent institutional work, openness to citizens, and delivering services with speed and high efficiency.`,
+    nukhaibAr:`ناحية النخيب هي إحدى نواحي قضاء الرطبة في محافظة الأنبار غرب العراق، وتقع على الطريق الدولي الرابط بين العراق والسعودية والأردن.
+
+تتميز النخيب بموقعها الجغرافي الاستراتيجي وطبيعتها الصحراوية، وتضم عدداً من القرى والمجمعات السكنية. يعتمد سكانها بشكل أساسي على التجارة والخدمات والنقل والزراعة الصحراوية.
+
+تبلغ مساحة الناحية مساحة واسعة، وتعد بوابة العراق الغربية ونقطة عبور رئيسية للزوار والتجارة.`,
+    nukhaibEn:`Al-Nukhaib is one of the districts of Rutba in Anbar Province, western Iraq, located on the international highway linking Iraq with Saudi Arabia and Jordan.
+
+Al-Nukhaib is characterized by its strategic geographical location and desert nature, and includes several villages and residential complexes. Its residents depend mainly on trade, services, transport and desert agriculture.
+
+The district covers a large area and is considered Iraq's western gateway and a major transit point for visitors and trade.`,
+    visionAr:"أن تكون مديرية بلدية النخيب مؤسسة بلدية رائدة في تقديم الخدمات، ونموذجاً في التنمية الحضرية المستدامة على مستوى محافظة الأنبار، بما يضمن بيئة عمرانية آمنة ومتطورة تلبي تطلعات المواطنين.",
+    visionEn:"To be a leading municipal institution in service delivery and a model of sustainable urban development in Anbar Province, ensuring a safe and modern urban environment that meets citizens' aspirations.",
+    goalsAr:`• تطوير البنية التحتية والخدمات البلدية في الناحية.
+• تحسين واقع النظافة والبيئة الحضرية.
+• تنظيم العمران وضبط التجاوزات على الأملاك العامة.
+• رفع كفاءة الكوادر العاملة في المديرية.
+• تعزيز الشفافية ومكافحة الفساد في جميع المفاصل.
+• إنجاز المشاريع الخدمية وفق الجدول الزمني المحدد.
+• التحول الرقمي وتسهيل الإجراءات على المواطنين.`,
+    goalsEn:`• Develop infrastructure and municipal services in the district.
+• Improve cleanliness and the urban environment.
+• Organize urban development and control violations of public property.
+• Raise the efficiency of the Directorate's staff.
+• Promote transparency and fight corruption at all levels.
+• Complete service projects according to schedule.
+• Digital transformation and simplifying procedures for citizens.`,
+    missionAr:"تقديم خدمات بلدية عالية الجودة للمواطنين وفق معايير مهنية وشفافة، من خلال كوادر مؤهلة وإدارة رشيدة للموارد، بما يحقق رضا المواطن ويدعم التنمية المستدامة في ناحية النخيب.",
+    missionEn:"Providing high-quality municipal services to citizens according to professional and transparent standards, through qualified staff and sound resource management, achieving citizen satisfaction and supporting sustainable development in Al-Nukhaib.",
+    orgChart:""
+  },
+  news:[
+    {id:UID(), image:"https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80",
+     titleAr:"افتتاح مشروع تبليط الشارع الرئيسي في النخيب",
+     titleEn:"Inauguration of the main street paving project in Al-Nukhaib",
+     contentAr:"أعلنت مديرية بلدية النخيب عن إنجاز مشروع تبليط الشارع الرئيسي في مركز الناحية بطول إجمالي يبلغ 3.5 كم، وضمن المواصفات الفنية المعتمدة.\n\nوقد أشرف على المشروع الكادر الهندسي في شعبة المشاريع بالتعاون مع الشركة المنفذة، حيث تم تنفيذ أعمال التبليط والأرصفة ومجاري تصريف المياه.\n\nويأتي هذا المشروع ضمن خطة المديرية لتطوير البنية التحتية وتحسين واقع الطرق في الناحية.",
+     contentEn:"Al-Nukhaib Municipality announced the completion of the main street paving project in the district center with a total length of 3.5 km, according to the approved technical specifications.\n\nThe project was supervised by the engineering staff in the Projects Division in cooperation with the executing company, including paving, sidewalks and drainage works.\n\nThis project comes within the Directorate's plan to develop infrastructure and improve roads in the district.",
+     date:"2024-11-18"},
+    {id:UID(), image:"https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=900&q=80",
+     titleAr:"حملة نظافة واسعة في أحياء ناحية النخيب",
+     titleEn:"Large cleaning campaign in Al-Nukhaib neighborhoods",
+     contentAr:"نفذت شعبة المخلفات الصلبة والبيئة في مديرية بلدية النخيب حملة نظافة شاملة شملت عدداً من الأحياء السكنية والشوارع الرئيسية في مركز الناحية.\n\nشارك في الحملة كوادر المديرية وآلياتها، حيث تم رفع النفايات والمخلفات وتنظيف الأرصفة والحدائق العامة.\n\nوتدعو المديرية المواطنين إلى التعاون والحفاظ على النظافة العامة ورمي النفايات في الأماكن المخصصة.",
+     contentEn:"The Solid Waste and Environment Division at Al-Nukhaib Municipality carried out a comprehensive cleaning campaign covering several residential neighborhoods and main streets in the district center.\n\nThe campaign involved the Directorate's staff and machinery, removing waste and cleaning sidewalks and public parks.\n\nThe Directorate calls on citizens to cooperate, maintain public cleanliness and dispose of waste in designated places.",
+     date:"2024-11-10"},
+    {id:UID(), image:"https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80",
+     titleAr:"ورشة عمل حول تبسيط إجراءات إجازة البناء",
+     titleEn:"Workshop on simplifying building permit procedures",
+     contentAr:"عقدت مديرية بلدية النخيب ورشة عمل متخصصة حول تبسيط إجراءات منح إجازة البناء وتقليل المدة الزمنية اللازمة لإنجاز المعاملة.\n\nحضر الورشة عدد من المهندسين والفنيين في شعبة تنظيم المدن وشعبة منح إجازة إشغال، وتم مناقشة آليات التحول الرقمي وأتمتة المعاملات.\n\nويهدف المشروع إلى تسهيل الإجراءات على المواطنين وتقليل المراجعات المتكررة.",
+     contentEn:"Al-Nukhaib Municipality held a specialized workshop on simplifying building permit procedures and reducing the time required to complete transactions.\n\nThe workshop was attended by engineers and technicians from the Urban Organization Division and the Occupancy Permit Division, discussing digital transformation and transaction automation.\n\nThe project aims to facilitate procedures for citizens and reduce repeated visits.",
+     date:"2024-10-28"},
+    {id:UID(), image:"https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=900&q=80",
+     titleAr:"المديرية تعلن عن مشروع إنارة الطرق الرئيسية",
+     titleEn:"Directorate announces main roads lighting project",
+     contentAr:"أعلنت مديرية بلدية النخيب عن المباشرة بمشروع إنارة الطرق الرئيسية والدوارات في مركز الناحية باستخدام أعمدة إنارة حديثة موفرة للطاقة.\n\nيهدف المشروع إلى تحسين الرؤية الليلية وتعزيز السلامة المرورية، إضافة إلى إضفاء مظهر جمالي على شوارع المدينة.\n\nومن المؤمل إنجاز المشروع خلال المدة المحددة في العقد.",
+     contentEn:"Al-Nukhaib Municipality announced the start of a project to light main roads and roundabouts in the district center using modern energy-saving lighting poles.\n\nThe project aims to improve night visibility and enhance traffic safety, in addition to giving the city streets a beautiful appearance.\n\nThe project is expected to be completed within the period specified in the contract.",
+     date:"2024-10-15"},
+    {id:UID(), image:"https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=900&q=80",
+     titleAr:"إزالة التجاوزات على الأملاك العامة في النخيب",
+     titleEn:"Removing violations on public properties in Al-Nukhaib",
+     contentAr:"نفذت شعبة الأملاك بالتعاون مع القسم البلدي حملة لإزالة التجاوزات الحاصلة على الأملاك العامة والأرصفة في عدد من شوارع مركز الناحية.\n\nوتم إنذار المخالفين مسبقاً وفق القانون، ومنحهم المدة القانونية لإزالة التجاوزات قبل اتخاذ الإجراءات القانونية.\n\nوتؤكد المديرية استمرار الحملات حفاظاً على المال العام وتنظيم الشارع العراقي.",
+     contentEn:"The Properties Division, in cooperation with the Municipal Department, carried out a campaign to remove violations on public properties and sidewalks in several streets of the district center.\n\nViolators were previously warned in accordance with the law and given the legal period to remove the violations before legal measures were taken.\n\nThe Directorate confirms the continuation of campaigns to preserve public funds and organize the street.",
+     date:"2024-09-30"},
+    {id:UID(), image:"https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=80",
+     titleAr:"اجتماع تنسيقي مع ديوان محافظة الأنبار",
+     titleEn:"Coordination meeting with Anbar Governorate Diwan",
+     contentAr:"عقد مدير بلدية النخيب اجتماعاً تنسيقياً مع ممثلي ديوان محافظة الأنبار لمناقشة آليات تطوير الخدمات البلدية في الناحية وسبل تسريع إنجاز المشاريع.\n\nتم خلال الاجتماع استعراض الخطط المستقبلية للمديرية ومناقشة التحديات التي تواجه سير العمل وسبل معالجتها.\n\nوأكد الجانبان على أهمية التنسيق المشترك لخدمة المواطنين.",
+     contentEn:"The Director of Al-Nukhaib Municipality held a coordination meeting with representatives of the Anbar Governorate Diwan to discuss mechanisms for developing municipal services in the district and ways to accelerate project completion.\n\nDuring the meeting, the Directorate's future plans were reviewed and the challenges facing the workflow and ways to address them were discussed.\n\nBoth sides emphasized the importance of joint coordination to serve citizens.",
+     date:"2024-09-12"}
+  ],
+  adminDepts:[
+    {id:UID(), icon:"👥", nameAr:"شعبة الموارد البشرية", nameEn:"Human Resources Division",
+     tasksAr:"• إدارة ملفات الموظفين والملاك الوظيفي.\n• تنظيم الإجازات والترفيعات والتنقلات.\n• إعداد الأوامر الإدارية والكتب الرسمية.\n• متابعة الحضور والانصراف والانضباط الوظيفي.\n• تنفيذ برامج التدريب والتطوير للكوادر.",
+     tasksEn:"• Managing employee files and staffing.\n• Organizing leaves, promotions and transfers.\n• Preparing administrative orders and official letters.\n• Monitoring attendance and functional discipline.\n• Implementing training and development programs."},
+    {id:UID(), icon:"💰", nameAr:"شعبة المالية والموازنات", nameEn:"Finance & Budget Division",
+     tasksAr:"• إعداد الموازنة السنوية ومتابعة تنفيذها.\n• تنظيم الصرفيات والمستمسكات المالية.\n• تدقيق أوليات الصرف والكشوفات.\n• متابعة الحسابات الختامية والتقارير المالية.\n• الإشراف على تنظيم السجلات المحاسبية.",
+     tasksEn:"• Preparing the annual budget and monitoring its implementation.\n• Organizing expenditures and financial documents.\n• Auditing disbursement documents and statements.\n• Following up on final accounts and financial reports.\n• Supervising accounting records."},
+    {id:UID(), icon:"⚖️", nameAr:"الشعبة القانونية", nameEn:"Legal Division",
+     tasksAr:"• تقديم المشورة القانونية لإدارات المديرية.\n• متابعة القضايا والدعاوى القضائية.\n• صياغة العقود والاتفاقيات.\n• التحقيق في المخالفات الإدارية.\n• إعداد الدراسات والرأي القانوني.",
+     tasksEn:"• Providing legal advice to the Directorate's departments.\n• Following up on legal cases and lawsuits.\n• Drafting contracts and agreements.\n• Investigating administrative violations.\n• Preparing legal studies and opinions."},
+    {id:UID(), icon:"🏠", nameAr:"شعبة الأملاك", nameEn:"Properties Division",
+     tasksAr:"• إدارة الأملاك العامة والخاصة التابعة للدولة.\n• إزالة التجاوزات على الأملاك العامة.\n• تنظيم سجلات الأملاك والخرائط.\n• منح إجازات الإشغال والانتفاع.\n• حصر وتوثيق العقارات البلدية.",
+     tasksEn:"• Managing state public and private properties.\n• Removing violations on public properties.\n• Organizing property records and maps.\n• Granting occupancy and usufruct permits.\n• Surveying and documenting municipal real estate."},
+    {id:UID(), icon:"🔍", nameAr:"شعبة التدقيق", nameEn:"Audit Division",
+     tasksAr:"• تدقيق المعاملات المالية والإدارية.\n• التحقق من مطابقة الإجراءات للقوانين.\n• إعداد تقارير الرقابة الداخلية.\n• متابعة تنفيذ ملاحظات المدقق.\n• تقييم أداء الشعب والوحدات.",
+     tasksEn:"• Auditing financial and administrative transactions.\n• Verifying compliance with laws.\n• Preparing internal control reports.\n• Following up on auditor's notes.\n• Evaluating the performance of divisions and units."},
+    {id:UID(), icon:"📥", nameAr:"شعبة الواردات", nameEn:"Incoming Mail Division",
+     tasksAr:"• استلام وتسجيل الكتب والمراسلات الواردة.\n• توزيع الواردات على الشعب المختصة.\n• تنظيم سجلات الصادر والوارد.\n• أرشفة المراسلات الرسمية إلكترونياً.\n• متابعة الإجابات على الكتب الرسمية.",
+     tasksEn:"• Receiving and registering incoming letters and correspondence.\n• Distributing incoming mail to the concerned divisions.\n• Organizing incoming and outgoing records.\n• Archiving official correspondence electronically.\n• Following up on responses to official letters."},
+    {id:UID(), icon:"👴", nameAr:"شعبة التقاعد", nameEn:"Retirement Division",
+     tasksAr:"• إعداد معاملات التقاعد للموظفين.\n• متابعة استكمال المستمسكات التقاعدية.\n• حساب الخدمة والاستحقاقات.\n• التواصل مع دائرة التقاعد العامة.\n• تنظيم سجلات المتقاعدين.",
+     tasksEn:"• Preparing retirement transactions for employees.\n• Following up on completing retirement documents.\n• Calculating service and entitlements.\n• Communicating with the General Retirement Department.\n• Organizing retiree records."}
+  ],
+  techDepts:[
+    {id:UID(), icon:"🏗️", nameAr:"شعبة المشاريع", nameEn:"Projects Division",
+     tasksAr:"• إعداد الخطط والمشاريع البلدية.\n• الإشراف على تنفيذ المشاريع والكشوفات الفنية.\n• إعداد التخمينات والتصاميم الأولية.\n• متابعة نسب الإنجاز والجداول الزمنية.\n• استلام الأعمال المنفذة وفق المواصفات.",
+     tasksEn:"• Preparing municipal plans and projects.\n• Supervising project implementation and technical statements.\n• Preparing estimates and preliminary designs.\n• Monitoring completion rates and timelines.\n• Receiving executed works according to specifications."},
+    {id:UID(), icon:"🗺️", nameAr:"شعبة تنظيم المدن", nameEn:"Urban Organization Division",
+     tasksAr:"• إعداد وتحديث التصاميم الأساسية للمدينة.\n• تنظيم استعمالات الأراضي والقطع.\n• منح إجازات البناء والتصديق على المخططات.\n• متابعة المخالفات العمرانية.\n• إعداد خرائط التنظيم والتقسيم.",
+     tasksEn:"• Preparing and updating the city's master plans.\n• Organizing land uses and plots.\n• Issuing building permits and approving plans.\n• Following up on urban violations.\n• Preparing organization and zoning maps."},
+    {id:UID(), icon:"📈", nameAr:"شعبة التخطيط والمتابعة", nameEn:"Planning & Follow-up Division",
+     tasksAr:"• إعداد الخطط السنوية والبرامج التنموية.\n• متابعة تنفيذ خطط الشعب والوحدات.\n• إعداد التقارير الإحصائية الدورية.\n• تقييم الأداء وتحليل النتائج.\n• التنسيق مع الجهات ذات العلاقة.",
+     tasksEn:"• Preparing annual plans and development programs.\n• Following up on the implementation of division plans.\n• Preparing periodic statistical reports.\n• Evaluating performance and analyzing results.\n• Coordinating with relevant authorities."},
+    {id:UID(), icon:"🚜", nameAr:"شعبة الآليات والورشة المركزية", nameEn:"Machinery & Central Workshop Division",
+     tasksAr:"• صيانة وإصلاح آليات ومعدات المديرية.\n• إدارة وتشغيل الورشة المركزية.\n• تنظيم سجلات الآليات والوقود.\n• توفير قطع الغيار والمستلزمات.\n• توزيع الآليات على المشاريع والخدمات.",
+     tasksEn:"• Maintaining and repairing the Directorate's machinery and equipment.\n• Managing and operating the central workshop.\n• Organizing machinery and fuel records.\n• Providing spare parts and supplies.\n• Distributing machinery to projects and services."},
+    {id:UID(), icon:"♻️", nameAr:"شعبة المخلفات الصلبة والبيئة", nameEn:"Solid Waste & Environment Division",
+     tasksAr:"• جمع ونقل ومعالجة النفايات الصلبة.\n• تنظيم حملات النظافة اليومية.\n• الإشراف على مراكز الطمر الصحي.\n• حماية البيئة ومكافحة التلوث.\n• توعية المواطنين بأهمية النظافة.",
+     tasksEn:"• Collecting, transporting and treating solid waste.\n• Organizing daily cleaning campaigns.\n• Supervising sanitary landfill sites.\n• Protecting the environment and combating pollution.\n• Raising citizen awareness of cleanliness."},
+    {id:UID(), icon:"🌳", nameAr:"شعبة الحدائق والمتنزهات", nameEn:"Parks & Gardens Division",
+     tasksAr:"• إنشاء وصيانة الحدائق والمتنزهات العامة.\n• زراعة الأشجار والمساحات الخضراء.\n• تنسيق وتجميل الشوارع والساحات.\n• ري وصيانة المزروعات.\n• توفير الجلسات والمرافق الترفيهية.",
+     tasksEn:"• Establishing and maintaining public gardens and parks.\n• Planting trees and green areas.\n• Landscaping streets and squares.\n• Irrigating and maintaining plants.\n• Providing seating and recreational facilities."},
+    {id:UID(), icon:"📜", nameAr:"شعبة منح إجازة إشغال", nameEn:"Occupancy Permit Division",
+     tasksAr:"• منح إجازات الإشغال للعقارات.\n• الكشف الميداني على المباني.\n• التحقق من مطابقة البناء للإجازة.\n• تنظيم سجلات إجازات الإشغال.\n• متابعة المباني المخالفة.",
+     tasksEn:"• Granting occupancy permits for properties.\n• Conducting field inspections of buildings.\n• Verifying building compliance with the permit.\n• Organizing occupancy permit records.\n• Following up on violating buildings."}
+  ],
+  muniDepts:[
+    {id:UID(), icon:"🏢", nameAr:"القسم البلدي / منفذ عرعر", nameEn:"Municipal Section / Arar Crossing",
+     tasksAr:"• تقديم الخدمات البلدية في منطقة منفذ عرعر الحدودي.\n• تنظيم النظافة والخدمات العامة.\n• متابعة الأملاك والمنشآت البلدية.\n• تنظيم إجازات البناء والإشغال.\n• التنسيق مع الجهات العاملة في المنفذ.",
+     tasksEn:"• Providing municipal services in the Arar border crossing area.\n• Organizing cleanliness and public services.\n• Following up on municipal properties and facilities.\n• Organizing building and occupancy permits.\n• Coordinating with entities operating at the crossing."},
+    {id:UID(), icon:"🏘️", nameAr:"القسم البلدي / الهبارية", nameEn:"Municipal Section / Al-Habariyah",
+     tasksAr:"• إدارة الشؤون البلدية في منطقة الهبارية.\n• تنفيذ حملات النظافة والصيانة.\n• متابعة المشاريع الخدمية.\n• تنظيم الشوارع والأرصفة.\n• خدمة المواطنين وتسهيل معاملاتهم.",
+     tasksEn:"• Managing municipal affairs in the Al-Habariyah area.\n• Implementing cleaning and maintenance campaigns.\n• Following up on service projects.\n• Organizing streets and sidewalks.\n• Serving citizens and facilitating their transactions."},
+    {id:UID(), icon:"🏘️", nameAr:"القسم البلدي / الكسرة", nameEn:"Municipal Section / Al-Kasrah",
+     tasksAr:"• تقديم الخدمات البلدية في منطقة الكسرة.\n• الإشراف على النظافة والحدائق.\n• متابعة أملاك الدولة والمنشآت.\n• تنظيم إجازات البناء.\n• الاستجابة لشكاوى المواطنين.",
+     tasksEn:"• Providing municipal services in the Al-Kasrah area.\n• Supervising cleanliness and gardens.\n• Following up on state properties and facilities.\n• Organizing building permits.\n• Responding to citizens' complaints."}
+  ],
+  tenders:[
+    {id:UID(), image:"", titleAr:"إعلان مزايدة علنية لتأجير بناية تعود للبلدية",
+     titleEn:"Public auction announcement for renting a municipality-owned building",
+     contentAr:"تعلن مديرية بلدية النخيب عن إجراء مزايدة علنية لتأجير بناية تعود للبلدية في مركز الناحية، وفق الشروط والضوابط المحددة في الإعلان.\n\n• موعد المزايدة: الأحد 15/12/2024 الساعة 10:00 صباحاً.\n• مكان المزايدة: مقر مديرية بلدية النخيب.\n• التأمينات: تدفع وفق التعليمات النافذة.\n• على الراغبين مراجعة شعبة المالية والموازنات للحصول على شروط المزايدة.",
+     contentEn:"Al-Nukhaib Municipality announces a public auction for renting a municipality-owned building in the district center, according to the conditions and regulations specified in the announcement.\n\n• Auction date: Sunday 15/12/2024 at 10:00 AM.\n• Auction location: Al-Nukhaib Municipality headquarters.\n• Insurance: paid according to applicable instructions.\n• Those interested should contact the Finance & Budget Division for the auction conditions.",
+     date:"2024-12-01"},
+    {id:UID(), image:"", titleAr:"مزايدة تنفيذ مشروع تبليط شوارع داخلية",
+     titleEn:"Auction for implementing internal street paving project",
+     contentAr:"تعلن مديرية بلدية النخيب عن مزايدة علنية لتنفيذ مشروع تبليط شوارع داخلية في مركز الناحية.\n\n• الكلفة التخمينية: حسب الوثائق الفنية.\n• مدة الإنجاز: 120 يوماً من تاريخ المباشرة.\n• التأمينات الأولية: 1% من الكلفة التخمينية.\n• آخر موعد لتقديم العطاءات: 20/12/2024.",
+     contentEn:"Al-Nukhaib Municipality announces a public auction for implementing an internal street paving project in the district center.\n\n• Estimated cost: according to technical documents.\n• Completion period: 120 days from start date.\n• Initial insurance: 1% of the estimated cost.\n• Deadline for submitting bids: 20/12/2024.",
+     date:"2024-12-05"}
+  ],
+  services:[
+    {id:UID(), icon:"🏗️", nameAr:"طلب إجازة بناء", nameEn:"Building Permit Request",
+     descAr:"خدمة إلكترونية تتيح للمواطن التقدم بطلب الحصول على إجازة بناء وفق الضوابط البلدية النافذة.",
+     descEn:"An electronic service that allows the citizen to apply for a building permit according to the applicable municipal regulations.",
+     stepsAr:"1. مراجعة شعبة تنظيم المدن في مديرية البلدية.\n2. تقديم سند العقار (الطابو) + هوية الأحوال المدنية.\n3. تقديم مخطط هندسي مصادق من مهندس نقابة.\n4. تعبئة استمارة طلب إجازة البناء.\n5. الكشف الميداني من قبل الكادر الهندسي.\n6. تسديد الرسوم المقررة قانونياً.\n7. استلام الإجازة بعد المصادقة.",
+     stepsEn:"1. Visit the Urban Organization Division at the Municipality.\n2. Submit the property deed (Tabu) + civil ID.\n3. Submit an engineering plan certified by a syndicate engineer.\n4. Fill out the building permit application form.\n5. Field inspection by the engineering staff.\n6. Pay the legally prescribed fees.\n7. Receive the permit after approval.",
+     reqAr:"سند العقار، هوية الأحوال المدنية، مخطط هندسي مصادق، استمارة الطلب.",
+     reqEn:"Property deed, civil ID, certified engineering plan, application form."},
+    {id:UID(), icon:"🚨", nameAr:"الإبلاغ عن مخالفة", nameEn:"Report a Violation",
+     descAr:"خدمة تتيح للمواطن الإبلاغ عن المخالفات البلدية كالتجاوزات على الأملاك العامة أو البناء غير المجاز.",
+     descEn:"A service allowing citizens to report municipal violations such as encroachments on public property or unauthorized construction.",
+     stepsAr:"1. تعبئة نموذج الإبلاغ (الاسم، الهاتف، نوع المخالفة).\n2. تحديد الموقع بدقة (العنوان أو الإحداثيات).\n3. إرفاق صور أو أدلة إن وجدت.\n4. إرسال الإبلاغ عبر البريد الإلكتروني أو الحضور شخصياً.\n5. يتم تسجيل الإبلاغ وإعطاء رقم متابعة.\n6. يقوم الكادر المختص بالكشف والمتابعة.\n7. إشعار المُبلغ بنتيجة الإجراء.",
+     stepsEn:"1. Fill in the reporting form (name, phone, violation type).\n2. Specify the location precisely (address or coordinates).\n3. Attach photos or evidence if available.\n4. Send the report via email or in person.\n5. The report is registered and a follow-up number is given.\n6. The competent staff inspects and follows up.\n7. The reporter is notified of the result.",
+     reqAr:"الاسم الكامل، رقم الهاتف، وصف المخالفة، الموقع، صور (اختياري).",
+     reqEn:"Full name, phone number, violation description, location, photos (optional)."},
+    {id:UID(), icon:"🔎", nameAr:"الاستعلام عن معاملة", nameEn:"Transaction Inquiry",
+     descAr:"خدمة تتيح للمواطن متابعة حالة معاملته المقدمة إلى المديرية إلكترونياً.",
+     descEn:"A service allowing citizens to track the status of their transaction submitted to the Directorate electronically.",
+     stepsAr:"1. الحصول على رقم المعاملة من الشعبة المختصة.\n2. الدخول إلى صفحة الاستعلام.\n3. إدخال رقم المعاملة ورقم الهاتف المسجل.\n4. عرض حالة المعاملة ومرحلة الإنجاز.\n5. في حال وجود ملاحظات يتم التواصل مع الشعبة.\n6. استلام المعاملة عند الإنجاز.",
+     stepsEn:"1. Obtain the transaction number from the concerned division.\n2. Access the inquiry page.\n3. Enter the transaction number and registered phone number.\n4. View the transaction status and completion stage.\n5. If there are notes, contact the division.\n6. Receive the transaction upon completion.",
+     reqAr:"رقم المعاملة، رقم الهاتف المسجل مسبقاً.",
+     reqEn:"Transaction number, previously registered phone number."},
+    {id:UID(), icon:"🔌", nameAr:"طلب توصيل خدمة", nameEn:"Service Connection Request",
+     descAr:"خدمة تتيح للمواطن تقديم طلب توصيل خدمة بلدية (ماء، مجاري، إنارة) إلى عقاره.",
+     descEn:"A service allowing citizens to request connecting a municipal service (water, sewage, lighting) to their property.",
+     stepsAr:"1. مراجعة المديرية وتقديم طلب التوصيل.\n2. تقديم سند العقار وهوية الأحوال المدنية.\n3. الكشف الميداني على الموقع.\n4. إعداد الكلفة التخمينية للمشروع.\n5. تسديد الأجور المقررة.\n6. تنفيذ التوصيل من قبل الكادر المختص.\n7. اختبار الخدمة وتسليمها للمواطن.",
+     stepsEn:"1. Visit the Directorate and submit a connection request.\n2. Submit the property deed and civil ID.\n3. Field inspection of the site.\n4. Preparing the estimated cost of the project.\n5. Paying the prescribed fees.\n6. Executing the connection by the competent staff.\n7. Testing the service and handing it over to the citizen.",
+     reqAr:"سند العقار، هوية الأحوال المدنية، استمارة الطلب، الموقع الدقيق.",
+     reqEn:"Property deed, civil ID, application form, exact location."}
+  ]
+};
+
+/* STATE */
+const LS_KEY = 'nukhaib_municipality_v2';
+let data = load();
+let draft = null;
+let lang = localStorage.getItem('nukhaib_lang') || 'ar';
+let theme = localStorage.getItem('nukhaib_theme') || 'light';
+let galleryTimer = null, galleryCur = 0, galleryAnimIdx = 0;
+const GALLERY_ANIMS = ['anim-fade','anim-slide-left','anim-slide-right','anim-slide-up','anim-slide-down','anim-zoom-in','anim-zoom-out','anim-rotate','anim-flip','anim-blur','anim-diagonal','anim-swing'];
+
+function load(){
+  try{
+    const raw = localStorage.getItem(LS_KEY);
+    if(!raw) return JSON.parse(JSON.stringify(DEFAULT_DATA));
+    const parsed = JSON.parse(raw);
+    return deepMerge(JSON.parse(JSON.stringify(DEFAULT_DATA)), parsed);
+  }catch(e){ return JSON.parse(JSON.stringify(DEFAULT_DATA)); }
+}
+function deepMerge(base, over){
+  for(const k in over){
+    if(over[k] && typeof over[k]==='object' && !Array.isArray(over[k]) && base[k] && typeof base[k]==='object'){
+      deepMerge(base[k], over[k]);
+    } else { base[k] = over[k]; }
+  }
+  return base;
+}
+function persist(){ localStorage.setItem(LS_KEY, JSON.stringify(data)); }
+
+/* HELPERS */
+const $ = s => document.querySelector(s);
+const esc = s => String(s==null?'':s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const T = (obj, key) => {
+  if(!obj) return '';
+  const a = obj[key+'Ar'], e = obj[key+'En'];
+  return (lang==='en' ? (e || a) : (a || e)) || '';
+};
+const L = (a,e) => (lang==='en' ? (e||a) : (a||e));
+function toast(msg){
+  const t = $('#toast'); t.textContent = msg; t.classList.add('show');
+  clearTimeout(t._t); t._t = setTimeout(()=>t.classList.remove('show'), 2400);
+}
+const uid = () => UID();
+
+/* UI STRINGS */
+const UI = {
+  ar:{
+    home:'الرئيسية', about:'عن المديرية', news:'آخر الأخبار', adminDepts:'الشعب الإدارية',
+    techDepts:'الشعب الفنية', muniDepts:'الأقسام البلدية', tenders:'المزايدات',
+    services:'خدماتنا الإلكترونية', contact:'اتصل بنا',
+    aboutUs:'عن المديرية', directorBio:'السيرة الذاتية للمدير', aboutNukhaib:'نبذة عن النخيب',
+    vision:'الرؤيا', goals:'الأهداف', mission:'الرسالة', orgChart:'الهيكل التنظيمي',
+    downloadOrg:'تحميل صورة الهيكل التنظيمي (JPG)',
+    more:'المزيد ←', readMore:'اقرأ المزيد',
+    latestNews:'آخر الأخبار', galleryTitle:'معرض الصور', videoTitle:'شاهدنا على يوتيوب',
+    videoNotSet:'لم يتم تعيين فيديو بعد من قبل مدير الموقع',
+    videoInvalid:'رابط الفيديو غير صالح',
+    importantLinks:'مواقع إلكترونية مهمة',
+    locationMap:'موقعنا على الخريطة', contactInfo:'معلومات الاتصال بنا',
+    address:'العنوان', phone:'الهاتف', email:'البريد الإلكتروني', hours:'أوقات العمل',
+    statsPosts:'المنشورات', statsDepts:'الأقسام والشعب', statsTenders:'المزايدات',
+    statsServices:'الخدمات الإلكترونية', statsVisitors:'زوار الموقع',
+    quickLinks:'روابط سريعة', followUs:'تابعنا على',
+    allNews:'جميع الأخبار', newsDetails:'تفاصيل الخبر',
+    backToNews:'← العودة إلى الأخبار',
+    tasksLabel:'المهام', noContent:'لا يوجد محتوى حالياً.',
+    tenderDate:'تاريخ الإعلان',
+    serviceSteps:'خطوات الحصول على الخدمة', requiredDocs:'المستمسكات المطلوبة',
+    copyright:'جميع الحقوق محفوظة © مديرية بلدية النخيب',
+    footerAbout:'مديرية بلدية النخيب إحدى تشكيلات وزارة الإعمار والإسكان والبلديات والأشغال العامة، تقدم الخدمات البلدية لأهالي ناحية النخيب.',
+    homeLink:'الرئيسية', aboutLink:'عن المديرية', contactLink:'اتصل بنا',
+    servicesShort:'خدماتنا', newsShort:'الأخبار',
+    backToPortals:'← العودة إلى البوابات', add:'إضافة', save:'حفظ', delete:'حذف'
+  },
+  en:{
+    home:'Home', about:'About', news:'Latest News', adminDepts:'Administrative Divisions',
+    techDepts:'Technical Divisions', muniDepts:'Municipal Sections', tenders:'Tenders',
+    services:'E-Services', contact:'Contact Us',
+    aboutUs:'About the Directorate', directorBio:'Director Biography', aboutNukhaib:'About Al-Nukhaib',
+    vision:'Vision', goals:'Goals', mission:'Mission', orgChart:'Organizational Chart',
+    downloadOrg:'Download Organizational Chart (JPG)',
+    more:'More →', readMore:'Read more',
+    latestNews:'Latest News', galleryTitle:'Photo Gallery', videoTitle:'Watch us on YouTube',
+    videoNotSet:'No video has been set yet by the site manager',
+    videoInvalid:'Invalid video link',
+    importantLinks:'Important Websites',
+    locationMap:'Our Location on the Map', contactInfo:'Contact Information',
+    address:'Address', phone:'Phone', email:'Email', hours:'Working Hours',
+    statsPosts:'Posts', statsDepts:'Divisions', statsTenders:'Tenders',
+    statsServices:'E-Services', statsVisitors:'Visitors',
+    quickLinks:'Quick Links', followUs:'Follow Us',
+    allNews:'All News', newsDetails:'News Details',
+    backToNews:'← Back to News',
+    tasksLabel:'Tasks', noContent:'No content currently.',
+    tenderDate:'Announcement Date',
+    serviceSteps:'Steps to obtain the service', requiredDocs:'Required documents',
+    copyright:'All rights reserved © Al-Nukhaib Municipality Directorate',
+    footerAbout:'Al-Nukhaib Municipality Directorate is one of the formations of the Ministry of Construction, Housing, Municipalities and Public Works, providing municipal services to the people of Al-Nukhaib.',
+    homeLink:'Home', aboutLink:'About', contactLink:'Contact',
+    servicesShort:'Services', newsShort:'News',
+    backToPortals:'← Back to portals', add:'Add', save:'Save', delete:'Delete'
+  }
+};
+const t = k => (UI[lang] && UI[lang][k]) || UI.ar[k] || k;
+
+/* NAV DEFINITION */
+const NAV = [
+  {id:'home', label:'home', route:'#/'},
+  {id:'about', label:'about', route:'#/about', children:[
+    {label:'aboutUs', route:'#/about/overview'},
+    {label:'directorBio', route:'#/about/director'},
+    {label:'aboutNukhaib', route:'#/about/nukhaib'},
+    {label:'vision', route:'#/about/vision'},
+    {label:'goals', route:'#/about/goals'},
+    {label:'mission', route:'#/about/mission'},
+    {label:'orgChart', route:'#/about/org'}
+  ]},
+  {id:'news', label:'news', route:'#/news'},
+  {id:'adminDepts', label:'adminDepts', route:'#/admin-depts'},
+  {id:'techDepts', label:'techDepts', route:'#/tech-depts'},
+  {id:'muniDepts', label:'muniDepts', route:'#/muni-depts'},
+  {id:'tenders', label:'tenders', route:'#/tenders'},
+  {id:'services', label:'services', route:'#/services'},
+  {id:'contact', label:'contact', route:'#/contact'}
+];
+
+/* =========================================================
+   RENDER HEADER
+   ========================================================= */
+function renderHeader(){
+  const s = data.settings;
+  $('#siteNameTxt').textContent = L(s.siteNameAr, s.siteNameEn);
+  $('#siteNameSub').textContent = lang==='en' ? s.siteNameAr : s.siteNameEn;
+  const lm = $('#logoMark');
+  if(s.logoImg){ lm.innerHTML = `<img src="${esc(s.logoImg)}" alt="logo">`; }
+  else { lm.textContent = s.logo || '🏛️'; }
+  $('#tbLeft').textContent = lang==='en'
+    ? '🇮🇶 Republic of Iraq — Ministry of Construction, Housing, Municipalities & Public Works'
+    : '🇮🇶 جمهورية العراق — وزارة الإعمار والإسكان والبلديات والأشغال العامة';
+  $('#tbRight').innerHTML = `<a href="tel:${esc(data.contact.phone)}">📞 ${esc(data.contact.phone)}</a> &nbsp;|&nbsp; <a href="mailto:${esc(data.contact.email)}">✉️ ${esc(data.contact.email)}</a>`;
+
+  const nav = $('#mainNav');
+  let html = '';
+  NAV.forEach(item=>{
+    let children = item.children;
+    if(item.id==='adminDepts') children = (data.adminDepts||[]).map(d=>({labelRaw:T(d,'name'), route:'#/admin-depts/'+d.id}));
+    if(item.id==='techDepts') children = (data.techDepts||[]).map(d=>({labelRaw:T(d,'name'), route:'#/tech-depts/'+d.id}));
+    if(item.id==='muniDepts') children = (data.muniDepts||[]).map(d=>({labelRaw:T(d,'name'), route:'#/muni-depts/'+d.id}));
+    const has = children && children.length;
+
+    html += `<div class="nav-item" data-nav="${item.id}">`;
+    html += `<a class="nav-main-link" href="${item.route}">${esc(t(item.label))}</a>`;
+    if(has){
+      html += `<button class="nav-caret" type="button" aria-label="open">▼</button>`;
+      html += `<div class="dropdown">` + children.map(c=>
+        `<a href="${c.route}">${esc(c.labelRaw || t(c.label))}</a>`).join('') + `</div>`;
+    }
+    html += `</div>`;
+  });
+  nav.innerHTML = html;
+
+  nav.querySelectorAll('.nav-caret').forEach(btn=>{
+    btn.addEventListener('click', e=>{
+      e.preventDefault(); e.stopPropagation();
+      const p = btn.closest('.nav-item');
+      const wasOpen = p.classList.contains('open');
+      nav.querySelectorAll('.nav-item').forEach(x=>x.classList.remove('open'));
+      if(!wasOpen) p.classList.add('open');
+    });
+  });
+  nav.querySelectorAll('.dropdown a').forEach(a=>{
+    a.addEventListener('click', ()=>{
+      nav.classList.remove('open');
+      nav.querySelectorAll('.nav-item').forEach(x=>x.classList.remove('open'));
+    });
+  });
+
+  const cur = location.hash || '#/';
+  nav.querySelectorAll('.nav-item').forEach(ni=>{
+    const id = ni.dataset.nav;
+    const map = {home:'#/', about:'#/about', news:'#/news', adminDepts:'#/admin-depts', techDepts:'#/tech-depts', muniDepts:'#/muni-depts', tenders:'#/tenders', services:'#/services', contact:'#/contact'};
+    if(cur.startsWith(map[id]||'###')) ni.classList.add('active');
+  });
+}
+
+/* =========================================================
+   COMMON BLOCKS
+   ========================================================= */
+function socialIcons(){
+  const s = data.social;
+  return `<div class="social-row">
+    <a class="social-ico fb" href="${esc(s.facebook||'#')}" target="_blank" rel="noopener" title="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/></svg></a>
+    <a class="social-ico wa" href="${esc(s.whatsapp||'#')}" target="_blank" rel="noopener" title="WhatsApp"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.5-5.8c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.3.1-.5l.4-.5c.1-.2.2-.3.2-.5 0-.2 0-.3-.1-.5l-.7-1.7c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1-.1-.2-.2-.2-.4-.3z"/></svg></a>
+    <a class="social-ico tt" href="${esc(s.tiktok||'#')}" target="_blank" rel="noopener" title="TikTok"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.8a4.6 4.6 0 0 1-1.1-3H12v12.6a2.6 2.6 0 1 1-2.6-2.6c.2 0 .5 0 .7.1V9.8a5.7 5.7 0 0 0-.7 0A5.7 5.7 0 1 0 15 15.5V9.2a7.4 7.4 0 0 0 4.3 1.4V7.5a4.6 4.6 0 0 1-2.7-1.7z"/></svg></a>
+    <a class="social-ico yt" href="${esc(s.youtube||'#')}" target="_blank" rel="noopener" title="YouTube"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.4-.4-5c-.2-.9-.9-1.6-1.8-1.8C19 4.8 12 4.8 12 4.8s-7 0-8.8.4c-.9.2-1.6.9-1.8 1.8C1 8.6 1 12 1 12s0 3.4.4 5c.2.9.9 1.6 1.8 1.8 1.8.4 8.8.4 8.8.4s7 0 8.8-.4c.9-.2 1.6-.9 1.8-1.8.4-1.6.4-5 .4-5zM9.8 15.5v-7l6 3.5-6 3.5z"/></svg></a>
+  </div>`;
+}
+
+function pageFooterBlock(){
+  const c = data.contact;
+  return `
+  <div class="page-footer-block">
+    <div class="pf-grid">
+      <div class="pf-box">
+        <h3>📍 ${esc(t('locationMap'))}</h3>
+        <div class="map-frame">
+          <iframe src="${esc(data.settings.mapEmbed)}" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+      <div class="pf-box">
+        <h3>📞 ${esc(t('contactInfo'))}</h3>
+        <div class="contact-rows">
+          <div class="contact-row"><div class="ci">📍</div><div><b>${esc(t('address'))}</b><span>${esc(L(c.addressAr,c.addressEn))}</span></div></div>
+          <div class="contact-row"><div class="ci">📞</div><div><b>${esc(t('phone'))}</b><span dir="ltr">${esc(c.phone)}</span></div></div>
+          <div class="contact-row"><div class="ci">✉️</div><div><b>${esc(t('email'))}</b><span dir="ltr">${esc(c.email)}</span></div></div>
+          <div class="contact-row"><div class="ci">🕒</div><div><b>${esc(t('hours'))}</b><span>${esc(L(c.hoursAr,c.hoursEn))}</span></div></div>
+        </div>
+        ${socialIcons()}
+      </div>
+    </div>
+  </div>`;
+}
+
+function pageHero(title, crumbs){
+  return `<section class="page-hero"><div class="wrap">
+    <h1>${esc(title)}</h1>
+    <div class="breadcrumb"><a href="#/">${esc(t('homeLink'))}</a>${crumbs ? ' <span>›</span> ' + crumbs : ''}</div>
+  </div></section>`;
+}
+
+/* =========================================================
+   GALLERY
+   ========================================================= */
+function initGallery(){
+  stopGalleryTimer();
+  const wrap = document.getElementById('galleryCarousel');
+  if(!wrap) return;
+  const imgs = data.gallery || [];
+  if(!imgs.length){
+    wrap.innerHTML = `<div style="display:grid;place-items:center;height:100%;color:var(--muted)">${esc(t('noContent'))}</div>`;
+    return;
+  }
+  let html = imgs.map((g,i)=>`
+    <div class="gal-slide${i===0?' active':''}" style="background-image:url('${esc(g.image)}')">
+      ${(g.captionAr||g.captionEn) ? `<div class="gal-caption">${esc(L(g.captionAr,g.captionEn))}</div>` : ''}
+    </div>`).join('');
+  html += `<button class="gal-nav prev" type="button" onclick="galNav(-1)">‹</button>`;
+  html += `<button class="gal-nav next" type="button" onclick="galNav(1)">›</button>`;
+  html += `<div class="gal-dots">${imgs.map((_,i)=>`<button class="gal-dot${i===0?' active':''}" type="button" onclick="galGo(${i})"></button>`).join('')}</div>`;
+  wrap.innerHTML = html;
+  galleryCur = 0; galleryAnimIdx = 0;
+  startGalleryTimer();
+}
+function startGalleryTimer(){
+  stopGalleryTimer();
+  galleryTimer = setInterval(()=>galNav(1), 2500);
+}
+function stopGalleryTimer(){
+  if(galleryTimer) clearInterval(galleryTimer);
+  galleryTimer = null;
+}
+window.galNav = function(dir){
+  const total = (data.gallery||[]).length;
+  if(!total) return;
+  galleryCur = (galleryCur + dir + total) % total;
+  galleryAnimIdx = (galleryAnimIdx + 1) % GALLERY_ANIMS.length;
+  galShow(galleryCur, GALLERY_ANIMS[galleryAnimIdx]);
+  startGalleryTimer();
+};
+window.galGo = function(idx){
+  galleryCur = idx;
+  galleryAnimIdx = (galleryAnimIdx + 1) % GALLERY_ANIMS.length;
+  galShow(idx, GALLERY_ANIMS[galleryAnimIdx]);
+  startGalleryTimer();
+};
+function galShow(idx, animClass){
+  const wrap = document.getElementById('galleryCarousel');
+  if(!wrap) return;
+  const slides = wrap.querySelectorAll('.gal-slide');
+  const dots = wrap.querySelectorAll('.gal-dot');
+  slides.forEach(s=>{ s.className = 'gal-slide'; });
+  void wrap.offsetWidth;
+  if(slides[idx]) slides[idx].className = 'gal-slide active ' + animClass;
+  dots.forEach((d,i)=> d.classList.toggle('active', i===idx));
+}
+
+/* =========================================================
+   YOUTUBE
+   ========================================================= */
+function ytExtractId(url){
+  const m = String(url||'').match(/(?:youtu\.be\/|v=|\/embed\/|\/shorts\/)([a-zA-Z0-9_-]{11})/);
+  return m ? m[1] : '';
+}
+function renderYouTube(){
+  const url = (data.settings.youtubeUrl||'').trim();
+  if(!url) return `<div class="yt-placeholder">📺 ${esc(t('videoNotSet'))}</div>`;
+  const id = ytExtractId(url);
+  if(!id) return `<div class="yt-placeholder">⚠️ ${esc(t('videoInvalid'))}</div>`;
+  return `<div class="yt-frame"><iframe src="https://www.youtube.com/embed/${id}" title="YouTube Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>`;
+}
+
+/* =========================================================
+   HOME PAGE
+   ========================================================= */
+function renderHome(){
+  const s = data.settings;
+  const stats = {
+    posts: (data.news||[]).length,
+    depts: (data.adminDepts||[]).length + (data.techDepts||[]).length + (data.muniDepts||[]).length,
+    tenders: (data.tenders||[]).length,
+    services: (data.services||[]).length,
+    visitors: data.stats.visitors
+  };
+  const latest = (data.news||[]).slice(0,6);
+
+  const html = `
+  <section class="hero" style="background-image:url('${esc(s.heroImage)}')">
+    <div class="hero-inner">
+      <span class="hero-badge">🏛️ ${esc(lang==='en'?'Official Website':'الموقع الرسمي')}</span>
+      <h1>${esc(L(s.heroTitleAr,s.heroTitleEn))}</h1>
+      <p class="sub">${esc(L(s.heroSubAr,s.heroSubEn))}</p>
+      <div class="hero-actions">
+        <a class="btn" href="#/services">${esc(t('services'))}</a>
+        <a class="btn gold" href="#/contact">${esc(t('contact'))}</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-ico">📰</div><div class="stat-num" data-count="${stats.posts}">0</div><div class="stat-lbl">${esc(t('statsPosts'))}</div></div>
+    <div class="stat-card"><div class="stat-ico">🏢</div><div class="stat-num" data-count="${stats.depts}">0</div><div class="stat-lbl">${esc(t('statsDepts'))}</div></div>
+    <div class="stat-card"><div class="stat-ico">📋</div><div class="stat-num" data-count="${stats.tenders}">0</div><div class="stat-lbl">${esc(t('statsTenders'))}</div></div>
+    <div class="stat-card"><div class="stat-ico">💻</div><div class="stat-num" data-count="${stats.services}">0</div><div class="stat-lbl">${esc(t('statsServices'))}</div></div>
+    <div class="stat-card"><div class="stat-ico">👁️</div><div class="stat-num" data-count="${stats.visitors}">0</div><div class="stat-lbl">${esc(t('statsVisitors'))}</div></div>
+  </div>
+
+  <!-- GALLERY -->
+  <section class="section wrap">
+    <div class="section-title"><h2>${esc(t('galleryTitle'))}</h2></div>
+    <div class="gallery-carousel" id="galleryCarousel"></div>
+  </section>
+
+  <!-- LATEST NEWS -->
+  <section class="section wrap" style="padding-top:0">
+    <div class="section-title"><h2>${esc(t('latestNews'))}</h2></div>
+    <div class="grid-3">
+      ${latest.map(n=>newsCard(n)).join('') || `<p style="text-align:center;color:var(--muted);grid-column:1/-1">${esc(t('noContent'))}</p>`}
+    </div>
+    <div style="text-align:center;margin-top:34px"><a class="btn" href="#/news">${esc(t('allNews'))}</a></div>
+  </section>
+
+  <!-- YOUTUBE -->
+  <section class="section wrap" style="padding-top:0">
+    <div class="section-title"><h2>${esc(t('videoTitle'))}</h2></div>
+    <div class="yt-wrap">${renderYouTube()}</div>
+  </section>
+
+  <!-- IMPORTANT LINKS -->
+  <section class="section wrap" style="padding-top:0">
+    <div class="section-title"><h2>${esc(t('importantLinks'))}</h2></div>
+    <div class="links-grid">
+      ${(data.links||[]).map(l=>`
+        <a class="link-card" href="${esc(l.url)}" target="_blank" rel="noopener">
+          <span class="li">${esc(l.icon||'🔗')}</span>
+          <b>${esc(L(l.nameAr,l.nameEn))}</b>
+        </a>`).join('')}
+    </div>
+  </section>
+
+  ${pageFooterBlock()}
+  `;
+  $('#content').innerHTML = html;
+  animateCounters();
+  bumpVisitor();
+  initGallery();
+}
+
+function newsCard(n){
+  return `<article class="news-card">
+    <div class="news-thumb">
+      ${n.image ? `<img src="${esc(n.image)}" alt="${esc(T(n,'title'))}" loading="lazy">` : `<div class="ph">📰</div>`}
+      <span class="news-date">${esc(formatDate(n.date))}</span>
+    </div>
+    <div class="news-body">
+      <h3>${esc(T(n,'title'))}</h3>
+      <p>${esc(truncate(T(n,'content'), 110))}</p>
+      <a class="more-link" href="#/news/${n.id}">${esc(t('more'))}</a>
+    </div>
+  </article>`;
+}
+function truncate(s, n){ s = String(s||'').replace(/\s+/g,' '); return s.length>n ? s.slice(0,n).trim()+'…' : s; }
+function formatDate(d){
+  if(!d) return '';
+  const dt = new Date(d);
+  if(isNaN(dt)) return d;
+  return dt.toLocaleDateString(lang==='en'?'en-GB':'ar-EG',{year:'numeric',month:'short',day:'numeric'});
+}
+function animateCounters(){
+  document.querySelectorAll('.stat-num[data-count]').forEach(el=>{
+    const target = +el.dataset.count || 0;
+    let cur = 0;
+    const step = Math.max(1, Math.ceil(target/45));
+    const iv = setInterval(()=>{
+      cur += step;
+      if(cur >= target){ cur = target; clearInterval(iv); }
+      el.textContent = cur.toLocaleString(lang==='en'?'en-US':'ar-EG');
+    }, 22);
+  });
+}
+function bumpVisitor(){
+  if(!sessionStorage.getItem('nukhaib_visited')){
+    data.stats.visitors = (+data.stats.visitors||0) + 1;
+    persist();
+    sessionStorage.setItem('nukhaib_visited','1');
+  }
+}
+
+/* =========================================================
+   ABOUT PAGE
+   ========================================================= */
+function renderAbout(sub){
+  const a = data.about;
+  let title = t('about'), body = '';
+  if(!sub || sub==='overview'){
+    title = t('aboutUs');
+    body = `<div class="article-box"><h2>${esc(t('aboutUs'))}</h2><div class="article-body">${esc(L(a.textAr,a.textEn))}</div></div>`;
+  } else if(sub==='director'){
+    title = t('directorBio');
+    body = `<div class="article-box">
+      <h2>${esc(t('directorBio'))}</h2>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start">
+        ${a.directorImg ? `<img src="${esc(a.directorImg)}" alt="director" style="width:200px;height:230px;object-fit:cover;border-radius:16px;box-shadow:var(--shadow)">` : `<div style="width:200px;height:230px;border-radius:16px;background:linear-gradient(135deg,var(--primary),var(--primary-2));display:grid;place-items:center;font-size:4rem;color:#fff">👤</div>`}
+        <div style="flex:1;min-width:240px">
+          <h3 style="color:var(--primary);margin-bottom:14px">${esc(L(a.directorNameAr,a.directorNameEn))}</h3>
+          <div class="article-body">${esc(L(a.directorBioAr,a.directorBioEn))}</div>
+        </div>
+      </div>
+    </div>`;
+  } else if(sub==='nukhaib'){
+    title = t('aboutNukhaib');
+    body = `<div class="article-box"><h2>${esc(t('aboutNukhaib'))}</h2><div class="article-body">${esc(L(a.nukhaibAr,a.nukhaibEn))}</div></div>`;
+  } else if(sub==='vision'){
+    title = t('vision');
+    body = `<div class="article-box"><h2>${esc(t('vision'))}</h2><div class="article-body">${esc(L(a.visionAr,a.visionEn))}</div></div>`;
+  } else if(sub==='goals'){
+    title = t('goals');
+    body = `<div class="article-box"><h2>${esc(t('goals'))}</h2><div class="article-body">${esc(L(a.goalsAr,a.goalsEn))}</div></div>`;
+  } else if(sub==='mission'){
+    title = t('mission');
+    body = `<div class="article-box"><h2>${esc(t('mission'))}</h2><div class="article-body">${esc(L(a.missionAr,a.missionEn))}</div></div>`;
+  } else if(sub==='org'){
+    title = t('orgChart');
+    body = `<div class="article-box">
+      <h2>${esc(t('orgChart'))}</h2>
+      ${a.orgChart ? `<img src="${esc(a.orgChart)}" alt="org chart" style="width:100%;border-radius:14px;border:1px solid var(--border)">` : `<div style="padding:60px;text-align:center;color:var(--muted);background:var(--bg-alt);border-radius:14px">${esc(t('noContent'))}</div>`}
+      ${a.orgChart ? `<div style="text-align:center;margin-top:22px"><a class="btn" href="${esc(a.orgChart)}" download="org-chart.jpg">⬇ ${esc(t('downloadOrg'))}</a></div>` : ''}
+    </div>`;
+  }
+  $('#content').innerHTML = pageHero(title, `<span>${esc(t('about'))}</span>`) +
+    `<section class="section wrap">${body}</section>` + pageFooterBlock();
+}
+
+/* =========================================================
+   NEWS
+   ========================================================= */
+function renderNews(){
+  const list = data.news || [];
+  const rows = [];
+  for(let i=0;i<list.length;i+=3) rows.push(list.slice(i,i+3));
+  const grid = rows.map(r=>`<div class="grid-3" style="margin-bottom:24px">${r.map(newsCard).join('')}</div>`).join('');
+  $('#content').innerHTML = pageHero(t('news'), `<span>${esc(t('news'))}</span>`) +
+    `<section class="section wrap">
+      ${list.length ? grid : `<p style="text-align:center;color:var(--muted)">${esc(t('noContent'))}</p>`}
+    </section>` + pageFooterBlock();
+}
+function renderNewsDetail(id){
+  const n = (data.news||[]).find(x=>x.id===id);
+  if(!n){ location.hash = '#/news'; return; }
+  $('#content').innerHTML = pageHero(T(n,'title'), `<a href="#/news">${esc(t('news'))}</a> <span>›</span> <span>${esc(t('newsDetails'))}</span>`) +
+    `<section class="section wrap">
+      <div class="article-box">
+        ${n.image ? `<img class="article-img" src="${esc(n.image)}" alt="">` : ''}
+        <h2>${esc(T(n,'title'))}</h2>
+        <div class="article-meta">📅 ${esc(formatDate(n.date))}</div>
+        <div class="article-body">${esc(T(n,'content'))}</div>
+        <div style="margin-top:28px"><a class="btn ghost" href="#/news">${esc(t('backToNews'))}</a></div>
+      </div>
+    </section>` + pageFooterBlock();
+}
+
+/* =========================================================
+   DEPARTMENTS (with highlight)
+   ========================================================= */
+function renderDepts(type, focusId){
+  const arr = data[type] || [];
+  const titles = {adminDepts:'adminDepts', techDepts:'techDepts', muniDepts:'muniDepts'};
+  const title = t(titles[type]);
+
+  $('#content').innerHTML = pageHero(title, `<span>${esc(title)}</span>`) +
+    `<section class="section wrap">
+      <div class="grid-2">
+        ${arr.map(d=>`
+          <div class="dept-card${focusId===d.id?' highlight':''}" id="dept-${esc(d.id)}">
+            <h3><span class="ico">${esc(d.icon||'🏢')}</span> ${esc(T(d,'name'))}</h3>
+            <p>${esc(T(d,'tasks'))}</p>
+          </div>`).join('') || `<p style="color:var(--muted);grid-column:1/-1;text-align:center">${esc(t('noContent'))}</p>`}
+      </div>
+    </section>` + pageFooterBlock();
+
+  if(focusId){
+    setTimeout(()=>{
+      const el = document.getElementById('dept-'+focusId);
+      if(el) el.scrollIntoView({behavior:'smooth', block:'center'});
+    }, 200);
+  }
+}
+
+/* =========================================================
+   TENDERS
+   ========================================================= */
+function renderTenders(){
+  const arr = data.tenders || [];
+  $('#content').innerHTML = pageHero(t('tenders'), `<span>${esc(t('tenders'))}</span>`) +
+    `<section class="section wrap">
+      <div style="display:flex;flex-direction:column;gap:20px">
+        ${arr.map(x=>{
+          const d = new Date(x.date);
+          const day = isNaN(d)?'--':String(d.getDate()).padStart(2,'0');
+          const mon = isNaN(d)?'':d.toLocaleDateString(lang==='en'?'en':'ar',{month:'short'});
+          return `<div class="tender-card">
+            <div class="td"><span>${esc(day)}</span><span>${esc(mon)}</span></div>
+            <div style="flex:1">
+              <h3>${esc(T(x,'title'))}</h3>
+              <p>${esc(T(x,'content'))}</p>
+              <div style="margin-top:10px;font-size:.78rem;color:var(--muted)">📅 ${esc(t('tenderDate'))}: ${esc(formatDate(x.date))}</div>
+            </div>
+          </div>`;
+        }).join('') || `<p style="text-align:center;color:var(--muted)">${esc(t('noContent'))}</p>`}
+      </div>
+    </section>` + pageFooterBlock();
+}
+
+/* =========================================================
+   SERVICES
+   ========================================================= */
+function renderServices(openId){
+  const arr = data.services || [];
+  $('#content').innerHTML = pageHero(t('services'), `<span>${esc(t('services'))}</span>`) +
+    `<section class="section wrap">
+      <div class="grid-2">
+        ${arr.map(s=>`
+          <div class="serv-card" onclick="openService('${s.id}')">
+            <div class="si">${esc(s.icon||'💻')}</div>
+            <h3>${esc(T(s,'name'))}</h3>
+            <p>${esc(T(s,'desc'))}</p>
+            <div style="margin-top:14px"><span class="more-link">${esc(t('more'))}</span></div>
+          </div>`).join('') || `<p style="text-align:center;color:var(--muted);grid-column:1/-1">${esc(t('noContent'))}</p>`}
+      </div>
+    </section>` + pageFooterBlock();
+  if(openId) setTimeout(()=>openService(openId), 100);
+}
+window.openService = function(id){
+  const s = (data.services||[]).find(x=>x.id===id);
+  if(!s) return;
+  const overlay = document.createElement('div');
+  overlay.className = 'modal-overlay show';
+  overlay.innerHTML = `<div class="modal" style="max-width:720px">
+    <div style="text-align:center;margin-bottom:18px">
+      <div class="si" style="width:72px;height:72px;border-radius:22px;margin:0 auto 14px;background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;display:grid;place-items:center;font-size:2rem">${esc(s.icon||'💻')}</div>
+      <h2>${esc(T(s,'name'))}</h2>
+      <p class="sub">${esc(T(s,'desc'))}</p>
+    </div>
+    <div style="margin-bottom:20px">
+      <h3 style="color:var(--primary);font-size:1rem;margin-bottom:10px">🧭 ${esc(t('serviceSteps'))}</h3>
+      <div class="article-body" style="font-size:.9rem">${esc(T(s,'steps'))}</div>
+    </div>
+    <div>
+      <h3 style="color:var(--primary);font-size:1rem;margin-bottom:10px">📄 ${esc(t('requiredDocs'))}</h3>
+      <div class="article-body" style="font-size:.9rem">${esc(T(s,'req'))}</div>
+    </div>
+    <div class="modal-actions"><button class="btn" onclick="this.closest('.modal-overlay').remove()">${esc(lang==='en'?'Close':'إغلاق')}</button></div>
+  </div>`;
+  overlay.addEventListener('click', e=>{ if(e.target===overlay) overlay.remove(); });
+  document.body.appendChild(overlay);
+};
+
+/* =========================================================
+   CONTACT PAGE — MAP RIGHT, CONTACT LEFT (EQUAL)
+   ========================================================= */
+function renderContact(){
+  const c = data.contact;
+  $('#content').innerHTML = pageHero(t('contact'), `<span>${esc(t('contact'))}</span>`) +
+    `<section class="section wrap">
+      <div class="grid-2" style="margin-bottom:34px">
+        <div class="pf-box">
+          <h3>📍 ${esc(t('locationMap'))}</h3>
+          <div class="map-frame" style="height:300px">
+            <iframe src="${esc(data.settings.mapEmbed)}" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+        <div class="pf-box">
+          <h3>📞 ${esc(t('contactInfo'))}</h3>
+          <div class="contact-rows">
+            <div class="contact-row"><div class="ci">📍</div><div><b>${esc(t('address'))}</b><span>${esc(L(c.addressAr,c.addressEn))}</span></div></div>
+            <div class="contact-row"><div class="ci">📞</div><div><b>${esc(t('phone'))}</b><span dir="ltr">${esc(c.phone)}</span></div></div>
+            <div class="contact-row"><div class="ci">✉️</div><div><b>${esc(t('email'))}</b><span dir="ltr">${esc(c.email)}</span></div></div>
+            <div class="contact-row"><div class="ci">🕒</div><div><b>${esc(t('hours'))}</b><span>${esc(L(c.hoursAr,c.hoursEn))}</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-title"><h2>${esc(t('importantLinks'))}</h2></div>
+      <div class="links-grid">
+        ${(data.links||[]).map(l=>`
+          <a class="link-card" href="${esc(l.url)}" target="_blank" rel="noopener">
+            <span class="li">${esc(l.icon||'🔗')}</span>
+            <b>${esc(L(l.nameAr,l.nameEn))}</b>
+          </a>`).join('')}
+      </div>
+
+      ${socialIcons()}
+    </section>` + pageFooterBlock();
+}
+
+/* =========================================================
+   ROUTER
+   ========================================================= */
+function router(){
+  stopGalleryTimer();
+  const raw = location.hash.slice(2) || '';
+  const parts = raw.split('/');
+  const route = parts[0] || '';
+  const param = parts[1] || '';
+
+  renderHeader();
+
+  switch(route){
+    case '': renderHome(); break;
+    case 'about': renderAbout(param); break;
+    case 'news': param ? renderNewsDetail(param) : renderNews(); break;
+    case 'admin-depts': renderDepts('adminDepts', param); break;
+    case 'tech-depts': renderDepts('techDepts', param); break;
+    case 'muni-depts': renderDepts('muniDepts', param); break;
+    case 'tenders': renderTenders(); break;
+    case 'services': renderServices(param); break;
+    case 'contact': renderContact(); break;
+    default: renderHome();
+  }
+  window.scrollTo({top:0, behavior:'instant'});
+  renderFooter();
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+function renderFooter(){
+  const s = data.settings, c = data.contact;
+  $('#footerGrid').innerHTML = `
+    <div>
+      <h4>${esc(L(s.siteNameAr,s.siteNameEn))}</h4>
+      <p>${esc(t('footerAbout'))}</p>
+    </div>
+    <div>
+      <h4>${esc(t('quickLinks'))}</h4>
+      <a href="#/">${esc(t('home'))}</a><br>
+      <a href="#/about">${esc(t('about'))}</a><br>
+      <a href="#/news">${esc(t('news'))}</a><br>
+      <a href="#/tenders">${esc(t('tenders'))}</a><br>
+      <a href="#/services">${esc(t('services'))}</a>
+    </div>
+    <div>
+      <h4>${esc(t('contactInfo'))}</h4>
+      <p>📍 ${esc(L(c.addressAr,c.addressEn))}</p>
+      <p dir="ltr">📞 ${esc(c.phone)}</p>
+      <p dir="ltr">✉️ ${esc(c.email)}</p>
+      <p>🕒 ${esc(L(c.hoursAr,c.hoursEn))}</p>
+    </div>`;
+  $('#footerBottom').textContent = `© ${new Date().getFullYear()} ${t('copyright')}`;
+}
+
+/* =========================================================
+   THEME / LANGUAGE
+   ========================================================= */
+function applyTheme(){
+  document.documentElement.setAttribute('data-theme', theme);
+  $('#darkBtn').textContent = theme==='dark' ? '☀️' : '🌙';
+}
+function applyLang(){
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang==='en' ? 'ltr' : 'rtl';
+  $('#langBtn').textContent = lang==='en' ? 'AR' : 'EN';
+}
+$('#darkBtn').addEventListener('click', ()=>{
+  theme = theme==='dark' ? 'light' : 'dark';
+  localStorage.setItem('nukhaib_theme', theme);
+  applyTheme();
+});
+$('#langBtn').addEventListener('click', ()=>{
+  lang = lang==='en' ? 'ar' : 'en';
+  localStorage.setItem('nukhaib_lang', lang);
+  applyLang(); router();
+});
+$('#burgerBtn').addEventListener('click', ()=>{
+  $('#mainNav').classList.toggle('open');
+});
+document.addEventListener('click', e=>{
+  if(!e.target.closest('nav.main-nav') && !e.target.closest('#burgerBtn')){
+    $('#mainNav').classList.remove('open');
+    document.querySelectorAll('.nav-item').forEach(x=>x.classList.remove('open'));
+  }
+});
+
+/* =========================================================
+   LOGO 5-CLICK ADMIN ACCESS
+   ========================================================= */
+let logoClicks = 0, logoTimer = null;
+$('#logoBox').addEventListener('click', ()=>{
+  logoClicks++;
+  clearTimeout(logoTimer);
+  logoTimer = setTimeout(()=>{ logoClicks = 0; }, 2500);
+  if(logoClicks >= 5){ logoClicks = 0; openLogin(); }
+});
+function openLogin(){
+  $('#loginUser').value = '';
+  $('#loginPass').value = '';
+  $('#loginModal').classList.add('show');
+  setTimeout(()=>$('#loginUser').focus(), 100);
+}
+function closeLogin(){ $('#loginModal').classList.remove('show'); }
+function doLogin(){
+  const u = $('#loginUser').value.trim();
+  const p = $('#loginPass').value;
+  if(u === data.settings.adminUser && p === data.settings.adminPass){
+    closeLogin(); openAdmin();
+  } else {
+    toast(lang==='en' ? '❌ Wrong username or password' : '❌ اسم المستخدم أو كلمة المرور غير صحيحة');
+  }
+}
+$('#loginPass').addEventListener('keydown', e=>{ if(e.key==='Enter') doLogin(); });
+
+/* =========================================================
+   ADMIN PANEL — PORTALS
+   ========================================================= */
+const ADMIN_PORTALS = [
+  {key:'settings', icon:'⚙️', titleAr:'الإعدادات العامة', titleEn:'General Settings'},
+  {key:'security', icon:'🔐', titleAr:'الأمان وكلمة المرور', titleEn:'Security & Password'},
+  {key:'about', icon:'ℹ️', titleAr:'عن المديرية', titleEn:'About Directorate'},
+  {key:'contact', icon:'📞', titleAr:'الاتصال والتواصل', titleEn:'Contact & Social'},
+  {key:'links', icon:'🔗', titleAr:'المواقع المهمة', titleEn:'Important Links'},
+  {key:'news', icon:'📰', titleAr:'الأخبار', titleEn:'News'},
+  {key:'gallery', icon:'🖼️', titleAr:'معرض الصور', titleEn:'Photo Gallery'},
+  {key:'video', icon:'📺', titleAr:'فيديو يوتيوب', titleEn:'YouTube Video'},
+  {key:'adminDepts', icon:'👥', titleAr:'الشعب الإدارية', titleEn:'Administrative Divisions'},
+  {key:'techDepts', icon:'🏗️', titleAr:'الشعب الفنية', titleEn:'Technical Divisions'},
+  {key:'muniDepts', icon:'🏘️', titleAr:'الأقسام البلدية', titleEn:'Municipal Sections'},
+  {key:'tenders', icon:'📋', titleAr:'المزايدات', titleEn:'Tenders'},
+  {key:'services', icon:'💻', titleAr:'الخدمات الإلكترونية', titleEn:'E-Services'}
+];
+
+function openAdmin(){
+  draft = JSON.parse(JSON.stringify(data));
+  renderAdmin();
+  $('#adminPanel').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+function closeAdmin(){
+  $('#adminPanel').classList.remove('show');
+  document.body.style.overflow = '';
+  draft = null;
+}
+function saveDraft(){
+  data = JSON.parse(JSON.stringify(draft));
+  persist();
+  renderHeader(); renderFooter(); router();
+  toast(lang==='en' ? '✅ Changes saved successfully' : '✅ تم حفظ التغييرات بنجاح');
+}
+function resetAll(){
+  if(!confirm(lang==='en'?'Reset all site content to defaults?':'هل تريد استعادة المحتوى الافتراضي للموقع بالكامل؟')) return;
+  localStorage.removeItem(LS_KEY);
+  data = JSON.parse(JSON.stringify(DEFAULT_DATA));
+  draft = JSON.parse(JSON.stringify(data));
+  persist();
+  renderAdmin();
+  renderHeader(); renderFooter(); router();
+  toast(lang==='en'?'↺ Reset to defaults':'↺ تم استعادة الوضع الافتراضي');
+}
+
+/* PATH HELPERS */
+function getPath(obj, path){ return path.split('.').reduce((o,k)=> o==null?undefined:o[k], obj); }
+function setPath(path, val){
+  const parts = path.split('.');
+  let o = draft;
+  for(let i=0;i<parts.length-1;i++){ o = o[parts[i]]; if(o==null) return; }
+  o[parts[parts.length-1]] = val;
+}
+window.setPath = setPath;
+
+function fileToData(input, path){
+  const f = input.files && input.files[0];
+  if(!f) return;
+  if(f.size > 3*1024*1024){
+    toast(lang==='en'?'⚠️ Image too large (max 3MB)':'⚠️ حجم الصورة كبير جداً (الحد 3 ميجا)');
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = ev=>{
+    setPath(path, ev.target.result);
+    const txt = document.querySelector(`input[data-path="${path}"]`);
+    if(txt) txt.value = ev.target.result;
+    toast(lang==='en'?'✔ Image uploaded':'✔ تم رفع الصورة');
+  };
+  reader.readAsDataURL(f);
+}
+window.fileToData = fileToData;
+
+/* FORM BUILDERS */
+function fld(label, path, value, opts={}){
+  const type = opts.type || 'text';
+  if(type === 'textarea'){
+    return `<label class="fld"><span>${esc(label)}</span>
+      <textarea data-path="${path}" rows="${opts.rows||4}" oninput="setPath(this.dataset.path,this.value)">${esc(value||'')}</textarea></label>`;
+  }
+  return `<label class="fld"><span>${esc(label)}</span>
+    <input type="${type}" data-path="${path}" value="${esc(value||'')}" oninput="setPath(this.dataset.path,this.value)"></label>`;
+}
+function imgFld(label, path, value){
+  return `<label class="fld"><span>${esc(label)}</span>
+    <input type="text" data-path="${path}" value="${esc(value||'')}" oninput="setPath(this.dataset.path,this.value)" placeholder="https://...">
+    <input class="file-input" type="file" accept="image/*" onchange="fileToData(this,'${path}')">
+  </label>`;
+}
+function itemEditor(arrPath, i, item, fields, titleField){
+  return `<div class="adm-item">
+    <div class="adm-item-head">
+      <span>${esc(item[titleField] || ('#'+(i+1)))}</span>
+      <button onclick="delItem('${arrPath}',${i})">🗑</button>
+    </div>
+    ${fields.map(f=>{
+      if(f.type==='image') return imgFld(f.label, `${arrPath}.${i}.${f.key}`, item[f.key]);
+      return fld(f.label, `${arrPath}.${i}.${f.key}`, item[f.key], f);
+    }).join('')}
+  </div>`;
+}
+window.delItem = function(arrPath, i){
+  const arr = getPath(draft, arrPath);
+  if(!arr) return;
+  arr.splice(i,1);
+  const key = currentAdminSection;
+  if(key && ADMIN_SECTIONS[key]){
+    document.getElementById('adminSectionContent').innerHTML = ADMIN_SECTIONS[key]();
+  }
+};
+window.addItem = function(arrPath){
+  const arr = getPath(draft, arrPath);
+  if(!arr) return;
+  const factories = {
+    news: ()=>({id:uid(), image:'', titleAr:'', titleEn:'', contentAr:'', contentEn:'', date:today()}),
+    tenders: ()=>({id:uid(), image:'', titleAr:'', titleEn:'', contentAr:'', contentEn:'', date:today()}),
+    services: ()=>({id:uid(), icon:'💻', nameAr:'', nameEn:'', descAr:'', descEn:'', stepsAr:'', stepsEn:'', reqAr:'', reqEn:''}),
+    links: ()=>({id:uid(), icon:'🔗', nameAr:'', nameEn:'', url:''}),
+    gallery: ()=>({id:uid(), image:'', captionAr:'', captionEn:''}),
+    adminDepts: ()=>({id:uid(), icon:'🏢', nameAr:'', nameEn:'', tasksAr:'', tasksEn:''}),
+    techDepts: ()=>({id:uid(), icon:'🏗️', nameAr:'', nameEn:'', tasksAr:'', tasksEn:''}),
+    muniDepts: ()=>({id:uid(), icon:'🏘️', nameAr:'', nameEn:'', tasksAr:'', tasksEn:''})
+  };
+  arr.push((factories[arrPath] || (()=>({})))());
+  const key = currentAdminSection;
+  if(key && ADMIN_SECTIONS[key]){
+    document.getElementById('adminSectionContent').innerHTML = ADMIN_SECTIONS[key]();
+  }
+};
+
+/* ADMIN RENDER */
+let currentAdminSection = null;
+
+function renderAdmin(){
+  currentAdminSection = null;
+  let html = '<div class="admin-portals-wrap" id="adminPortalsWrap"><div class="admin-portals">';
+  ADMIN_PORTALS.forEach(p=>{
+    html += `<button type="button" class="admin-portal" onclick="openAdminSection('${p.key}')">
+      <div class="ap-icon">${p.icon}</div>
+      <div class="ap-title">${esc(lang==='en'?p.titleEn:p.titleAr)}</div>
+    </button>`;
+  });
+  html += '</div></div>';
+  html += `<div class="admin-section-view" id="adminSectionView" style="display:none">
+    <button class="btn small ghost" style="margin-bottom:16px" onclick="backToAdminPortals()">${esc(t('backToPortals'))}</button>
+    <div id="adminSectionContent"></div>
+  </div>`;
+  $('#adminInner').innerHTML = html;
+}
+
+window.openAdminSection = function(key){
+  if(!ADMIN_SECTIONS[key]) return;
+  currentAdminSection = key;
+  document.getElementById('adminPortalsWrap').style.display = 'none';
+  document.getElementById('adminSectionView').style.display = 'block';
+  document.getElementById('adminSectionContent').innerHTML = ADMIN_SECTIONS[key]();
+  document.getElementById('adminSectionView').scrollTop = 0;
+};
+window.backToAdminPortals = function(){
+  currentAdminSection = null;
+  document.getElementById('adminPortalsWrap').style.display = 'block';
+  document.getElementById('adminSectionView').style.display = 'none';
+};
+
+/* SECTION RENDERERS */
+function renderSettingsSection(){
+  const d = draft;
+  return `
+    <h2>⚙️ ${esc(lang==='en'?'General Settings':'الإعدادات العامة')}</h2>
+    <div class="adm-hint">${esc(lang==='en'?'Edit site name, logo, hero section, map, and visitor count.':'تعديل اسم الموقع، الشعار، قسم الغلاف، الخريطة، وعدد الزوار.')}</div>
+    <div class="adm-row">
+      ${fld('اسم الموقع (عربي)','settings.siteNameAr', d.settings.siteNameAr)}
+      ${fld('Site Name (English)','settings.siteNameEn', d.settings.siteNameEn)}
+    </div>
+    <div class="adm-row">
+      ${fld('أيقونة الشعار (إيموجي)','settings.logo', d.settings.logo)}
+      ${imgFld('صورة الشعار (اختياري)','settings.logoImg', d.settings.logoImg)}
+    </div>
+    ${imgFld('صورة الغلاف الرئيسية (Hero)','settings.heroImage', d.settings.heroImage)}
+    <div class="adm-row">
+      ${fld('العنوان الرئيسي (عربي)','settings.heroTitleAr', d.settings.heroTitleAr)}
+      ${fld('Hero Title (English)','settings.heroTitleEn', d.settings.heroTitleEn)}
+    </div>
+    <div class="adm-row">
+      ${fld('النص التعريفي (عربي)','settings.heroSubAr', d.settings.heroSubAr, {type:'textarea', rows:3})}
+      ${fld('Hero Subtitle (English)','settings.heroSubEn', d.settings.heroSubEn, {type:'textarea', rows:3})}
+    </div>
+    ${fld('رابط خريطة Google (Embed URL)','settings.mapEmbed', d.settings.mapEmbed, {type:'textarea', rows:2})}
+    ${fld('عدد زوار الموقع','stats.visitors', d.stats.visitors, {type:'number'})}
+  `;
+}
+function renderSecuritySection(){
+  const d = draft;
+  return `
+    <h2>🔐 ${esc(lang==='en'?'Security & Password':'الأمان وكلمة المرور')}</h2>
+    <div class="adm-hint">${esc(lang==='en'?'Change the admin username and password used to access this panel (via 5 clicks on the logo).':'تغيير اسم المستخدم وكلمة المرور الخاصة بمدير الموقع (الدخول عبر النقر على الشعار 5 مرات).')}</div>
+    <div class="adm-row">
+      ${fld('اسم المستخدم / Username','settings.adminUser', d.settings.adminUser)}
+      ${fld('كلمة المرور / Password','settings.adminPass', d.settings.adminPass)}
+    </div>
+  `;
+}
+function renderAboutSection(){
+  const d = draft;
+  return `
+    <h2>ℹ️ ${esc(lang==='en'?'About Directorate':'عن المديرية')}</h2>
+    ${fld('نص عن المديرية (عربي)','about.textAr', d.about.textAr, {type:'textarea', rows:6})}
+    ${fld('About Text (English)','about.textEn', d.about.textEn, {type:'textarea', rows:6})}
+    <hr style="margin:18px 0;border:none;border-top:1px solid var(--border)">
+    <div class="adm-row">
+      ${fld('اسم المدير (عربي)','about.directorNameAr', d.about.directorNameAr)}
+      ${fld('Director Name (English)','about.directorNameEn', d.about.directorNameEn)}
+    </div>
+    ${imgFld('صورة المدير','about.directorImg', d.about.directorImg)}
+    ${fld('السيرة الذاتية للمدير (عربي)','about.directorBioAr', d.about.directorBioAr, {type:'textarea', rows:5})}
+    ${fld('Director Biography (English)','about.directorBioEn', d.about.directorBioEn, {type:'textarea', rows:5})}
+    <hr style="margin:18px 0;border:none;border-top:1px solid var(--border)">
+    ${fld('نبذة عن النخيب (عربي)','about.nukhaibAr', d.about.nukhaibAr, {type:'textarea', rows:5})}
+    ${fld('About Al-Nukhaib (English)','about.nukhaibEn', d.about.nukhaibEn, {type:'textarea', rows:5})}
+    <hr style="margin:18px 0;border:none;border-top:1px solid var(--border)">
+    ${fld('الرؤيا (عربي)','about.visionAr', d.about.visionAr, {type:'textarea', rows:3})}
+    ${fld('Vision (English)','about.visionEn', d.about.visionEn, {type:'textarea', rows:3})}
+    ${fld('الأهداف (عربي)','about.goalsAr', d.about.goalsAr, {type:'textarea', rows:5})}
+    ${fld('Goals (English)','about.goalsEn', d.about.goalsEn, {type:'textarea', rows:5})}
+    ${fld('الرسالة (عربي)','about.missionAr', d.about.missionAr, {type:'textarea', rows:3})}
+    ${fld('Mission (English)','about.missionEn', d.about.missionEn, {type:'textarea', rows:3})}
+    ${imgFld('صورة الهيكل التنظيمي (JPG)','about.orgChart', d.about.orgChart)}
+  `;
+}
+function renderContactSection(){
+  const d = draft;
+  return `
+    <h2>📞 ${esc(lang==='en'?'Contact & Social':'الاتصال والتواصل')}</h2>
+    <div class="adm-row">
+      ${fld('العنوان (عربي)','contact.addressAr', d.contact.addressAr)}
+      ${fld('Address (English)','contact.addressEn', d.contact.addressEn)}
+    </div>
+    <div class="adm-row">
+      ${fld('الهاتف','contact.phone', d.contact.phone)}
+      ${fld('البريد الإلكتروني','contact.email', d.contact.email)}
+    </div>
+    <div class="adm-row">
+      ${fld('أوقات العمل (عربي)','contact.hoursAr', d.contact.hoursAr)}
+      ${fld('Working Hours (English)','contact.hoursEn', d.contact.hoursEn)}
+    </div>
+    <hr style="margin:18px 0;border:none;border-top:1px solid var(--border)">
+    <div class="adm-row">
+      ${fld('رابط فيسبوك','social.facebook', d.social.facebook)}
+      ${fld('رابط واتساب','social.whatsapp', d.social.whatsapp)}
+    </div>
+    <div class="adm-row">
+      ${fld('رابط تكتوك','social.tiktok', d.social.tiktok)}
+      ${fld('رابط يوتيوب','social.youtube', d.social.youtube)}
+    </div>
+  `;
+}
+function renderLinksSection(){
+  const d = draft;
+  return `
+    <h2>🔗 ${esc(lang==='en'?'Important Links':'المواقع المهمة')}</h2>
+    <div class="adm-hint">${esc(lang==='en'?'Edit the important external websites (5 by default, can add/remove).':'تعديل المواقع الخمسة المهمة (إضافة/حذف).')}</div>
+    ${(d.links||[]).map((l,i)=>itemEditor('links', i, l, [
+      {key:'icon', label:'الأيقونة (إيموجي)'},
+      {key:'nameAr', label:'الاسم (عربي)'},
+      {key:'nameEn', label:'Name (English)'},
+      {key:'url', label:'الرابط URL'}
+    ], 'nameAr')).join('')}
+    <button class="btn small" onclick="addItem('links')">+ ${esc(t('add'))}</button>
+  `;
+}
+function renderNewsSection(){
+  const d = draft;
+  return `
+    <h2>📰 ${esc(lang==='en'?'News':'الأخبار')}</h2>
+    ${(d.news||[]).map((n,i)=>itemEditor('news', i, n, [
+      {key:'image', label:'صورة الخبر', type:'image'},
+      {key:'titleAr', label:'العنوان (عربي)'},
+      {key:'titleEn', label:'Title (English)'},
+      {key:'date', label:'التاريخ', type:'date'},
+      {key:'contentAr', label:'نص الخبر الكامل (عربي)', type:'textarea', rows:5},
+      {key:'contentEn', label:'Full Content (English)', type:'textarea', rows:5}
+    ], 'titleAr')).join('')}
+    <button class="btn small" onclick="addItem('news')">+ ${esc(t('add'))}</button>
+  `;
+}
+function renderGallerySection(){
+  const d = draft;
+  return `
+    <h2>🖼️ ${esc(lang==='en'?'Photo Gallery':'معرض الصور')}</h2>
+    <div class="adm-hint">${esc(lang==='en'?'The gallery auto-rotates every 2.5 seconds with different animations.':'يتغير المعرض تلقائياً كل 2.5 ثانية مع حركات مختلفة.')}</div>
+    ${(d.gallery||[]).map((g,i)=>itemEditor('gallery', i, g, [
+      {key:'image', label:'الصورة', type:'image'},
+      {key:'captionAr', label:'الوصف (عربي)'},
+      {key:'captionEn', label:'Caption (English)'}
+    ], 'captionAr')).join('')}
+    <button class="btn small" onclick="addItem('gallery')">+ ${esc(t('add'))}</button>
+  `;
+}
+function renderVideoSection(){
+  const d = draft;
+  return `
+    <h2>📺 ${esc(lang==='en'?'YouTube Video':'فيديو يوتيوب')}</h2>
+    <div class="adm-hint">${esc(lang==='en'?'Paste a YouTube video URL. It will be displayed on the homepage below the latest news.':'الصق رابط فيديو يوتيوب. سيظهر في الصفحة الرئيسية تحت آخر الأخبار.')}</div>
+    ${fld('YouTube URL','settings.youtubeUrl', d.settings.youtubeUrl)}
+    ${d.settings.youtubeUrl ? `<div style="margin-top:16px"><p style="font-weight:700;margin-bottom:10px">${esc(lang==='en'?'Preview:':'معاينة:')}</p><div class="yt-wrap">${renderYouTube()}</div></div>` : ''}
+  `;
+}
+function renderDeptsAdminSection(type, icon, titleAr, titleEn){
+  const d = draft;
+  const fields = [
+    {key:'icon', label:'الأيقونة (إيموجي)'},
+    {key:'nameAr', label:'الاسم (عربي)'},
+    {key:'nameEn', label:'Name (English)'},
+    {key:'tasksAr', label:'المهام (عربي)', type:'textarea', rows:6},
+    {key:'tasksEn', label:'Tasks (English)', type:'textarea', rows:6}
+  ];
+  return `
+    <h2>${icon} ${esc(lang==='en'?titleEn:titleAr)}</h2>
+    ${(d[type]||[]).map((x,i)=>itemEditor(type, i, x, fields, 'nameAr')).join('')}
+    <button class="btn small" onclick="addItem('${type}')">+ ${esc(t('add'))}</button>
+  `;
+}
+function renderTendersSection(){
+  const d = draft;
+  return `
+    <h2>📋 ${esc(lang==='en'?'Tenders':'المزايدات')}</h2>
+    ${(d.tenders||[]).map((x,i)=>itemEditor('tenders', i, x, [
+      {key:'image', label:'صورة (اختياري)', type:'image'},
+      {key:'titleAr', label:'العنوان (عربي)'},
+      {key:'titleEn', label:'Title (English)'},
+      {key:'date', label:'تاريخ الإعلان', type:'date'},
+      {key:'contentAr', label:'التفاصيل (عربي)', type:'textarea', rows:5},
+      {key:'contentEn', label:'Details (English)', type:'textarea', rows:5}
+    ], 'titleAr')).join('')}
+    <button class="btn small" onclick="addItem('tenders')">+ ${esc(t('add'))}</button>
+  `;
+}
+function renderServicesSection(){
+  const d = draft;
+  return `
+    <h2>💻 ${esc(lang==='en'?'E-Services':'الخدمات الإلكترونية')}</h2>
+    ${(d.services||[]).map((x,i)=>itemEditor('services', i, x, [
+      {key:'icon', label:'الأيقونة (إيموجي)'},
+      {key:'nameAr', label:'اسم الخدمة (عربي)'},
+      {key:'nameEn', label:'Service Name (English)'},
+      {key:'descAr', label:'الوصف (عربي)', type:'textarea', rows:3},
+      {key:'descEn', label:'Description (English)', type:'textarea', rows:3},
+      {key:'stepsAr', label:'خطوات الحصول على الخدمة (عربي) — كل خطوة في سطر', type:'textarea', rows:7},
+      {key:'stepsEn', label:'Steps (English) — one per line', type:'textarea', rows:7},
+      {key:'reqAr', label:'المستمسكات المطلوبة (عربي)', type:'textarea', rows:3},
+      {key:'reqEn', label:'Required Documents (English)', type:'textarea', rows:3}
+    ], 'nameAr')).join('')}
+    <button class="btn small" onclick="addItem('services')">+ ${esc(t('add'))}</button>
+  `;
+}
+
+/* Registry (functions are hoisted, so this works) */
+const ADMIN_SECTIONS = {
+  settings: renderSettingsSection,
+  security: renderSecuritySection,
+  about: renderAboutSection,
+  contact: renderContactSection,
+  links: renderLinksSection,
+  news: renderNewsSection,
+  gallery: renderGallerySection,
+  video: renderVideoSection,
+  adminDepts: ()=>renderDeptsAdminSection('adminDepts','👥','الشعب الإدارية','Administrative Divisions'),
+  techDepts: ()=>renderDeptsAdminSection('techDepts','🏗️','الشعب الفنية','Technical Divisions'),
+  muniDepts: ()=>renderDeptsAdminSection('muniDepts','🏘️','الأقسام البلدية','Municipal Sections'),
+  tenders: renderTendersSection,
+  services: renderServicesSection
+};
+
+/* =========================================================
+   INIT
+   ========================================================= */
+applyTheme();
+applyLang();
+renderHeader();
+renderFooter();
+router();
+window.addEventListener('hashchange', router);
+</script>
+</body>
+</html>
